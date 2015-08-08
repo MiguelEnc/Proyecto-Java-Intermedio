@@ -68,12 +68,18 @@ public class ListProfesorGUI extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Apellido");
 
+        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
         jLabel3.setText("Correo");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton1.setText("Actualizar");
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton2.setText("Borrar");
         jButton2.setMaximumSize(new java.awt.Dimension(68, 27));
         jButton2.setMinimumSize(new java.awt.Dimension(68, 27));
@@ -104,7 +110,7 @@ public class ListProfesorGUI extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -125,7 +131,7 @@ public class ListProfesorGUI extends javax.swing.JInternalFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

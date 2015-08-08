@@ -66,10 +66,10 @@ public class AddProfesorGUI extends javax.swing.JInternalFrame {
 
         jTextField3.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton1.setText("Guardar");
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton2.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -95,9 +95,9 @@ public class AddProfesorGUI extends javax.swing.JInternalFrame {
                                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

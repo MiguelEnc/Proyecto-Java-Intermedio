@@ -69,8 +69,12 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Nombre");
 
+        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Apellido");
+
+        jTextField2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel3.setText("Matricula");
@@ -78,11 +82,15 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel4.setText("Correo");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
+        jTextField4.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
+        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton1.setText("Actualizar");
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jButton2.setText("Cancelar");
+        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        jButton2.setText("Borrar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,8 +109,8 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                             .addComponent(jTextField2)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(120, 120, 120)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -113,7 +121,7 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

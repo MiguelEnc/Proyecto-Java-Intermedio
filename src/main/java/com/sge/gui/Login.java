@@ -48,6 +48,8 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Contraseña");
 
+        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+
         jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButton1.setText("Acceder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +65,8 @@ public class Login extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jPasswordField1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

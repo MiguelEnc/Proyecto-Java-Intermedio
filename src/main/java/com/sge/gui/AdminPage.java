@@ -7,6 +7,7 @@ package com.sge.gui;
 
 import java.awt.GridLayout;
 import javax.swing.Box;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,9 @@ public class AdminPage extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -64,7 +68,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenu1.setText("Profesor");
 
-        jMenuItem1.setText("Listar");
+        jMenuItem1.setText("Gestionar");
         jMenuItem1.setToolTipText("Muestra listado de profesores");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +90,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenu2.setText("Estudiante");
 
-        jMenuItem3.setText("Listar");
+        jMenuItem3.setText("Gestionar");
         jMenuItem3.setToolTipText("Muestra listado de estudiantes");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,39 +113,84 @@ public class AdminPage extends javax.swing.JFrame {
         jMenu3.setText("Materia");
         jMenu3.setToolTipText("");
 
-        jMenuItem5.setText("Listar");
+        jMenuItem5.setText("Gestionar");
         jMenuItem5.setToolTipText("Muestra listado de materias");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuItem7.setText("Agregar");
         jMenuItem7.setToolTipText("Agregar materia");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Aula");
 
-        jMenuItem6.setText("Listar");
+        jMenuItem6.setText("Gestionar");
         jMenuItem6.setToolTipText("Muestra listado de aulas");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem6);
 
         jMenuItem8.setText("Agregar");
         jMenuItem8.setToolTipText("Agregar aula");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem8);
 
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Sesion");
 
-        jMenuItem9.setText("Listar");
+        jMenuItem9.setText("Gestionar");
         jMenuItem9.setToolTipText("Muestra listado de sesiones");
         jMenu5.add(jMenuItem9);
 
         jMenuItem10.setText("Agregar");
         jMenuItem10.setToolTipText("Agregar sesion");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem10);
 
         jMenuBar1.add(jMenu5);
+
+        jMenu9.setText("Horario");
+
+        jMenuItem14.setText("Gestionar");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem14);
+
+        jMenuItem15.setText("Agregar");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem15);
+
+        jMenuBar1.add(jMenu9);
 
         jMenu6.setText("Usuario");
 
@@ -163,6 +212,11 @@ public class AdminPage extends javax.swing.JFrame {
         jMenu8.setToolTipText("");
 
         jMenuItem13.setText("Cerrar Sesion");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem13);
 
         jMenuBar1.add(Box.createHorizontalGlue());
@@ -215,6 +269,55 @@ public class AdminPage extends javax.swing.JFrame {
         addEstGui.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        
+        new Login().setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        AddMateriaGUI addMatGui = new AddMateriaGUI();
+        jDesktopPane1.add(addMatGui);
+        addMatGui.show();
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        AddAulaGUI addAulGui = new AddAulaGUI();
+        jDesktopPane1.add(addAulGui);
+        addAulGui.show();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        AddSesionGUI addSecGui = new AddSesionGUI();
+        jDesktopPane1.add(addSecGui);
+        addSecGui.show();
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        ListMateriaGUI lsMatGui = new ListMateriaGUI();
+        jDesktopPane1.add(lsMatGui);
+        lsMatGui.show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        ListAulaGUI lsAulGui = new ListAulaGUI();
+        jDesktopPane1.add(lsAulGui);
+        lsAulGui.show();
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        AddHorarioGUI addHorGui = new AddHorarioGUI();
+        jDesktopPane1.add(addHorGui);
+        addHorGui.show();
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        ListHorarioGUI lsHorGui = new ListHorarioGUI();
+        jDesktopPane1.add(lsHorGui);
+        lsHorGui.show();
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     /*
     public static void main(String args[]) {
         try {
@@ -247,12 +350,15 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
