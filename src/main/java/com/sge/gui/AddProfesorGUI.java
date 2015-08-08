@@ -11,13 +11,23 @@ package com.sge.gui;
  */
 public class AddProfesorGUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AddProfesorGUI
-     */
-    public AddProfesorGUI() {
+    //this class's instance
+    private static AddProfesorGUI INSTANCE = null;
+    
+    //constructor
+    private AddProfesorGUI() {
         initComponents();
     }
 
+    //Singleton Pattern implementation
+    public static AddProfesorGUI getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new AddProfesorGUI();
+        }
+        
+        return INSTANCE;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +48,7 @@ public class AddProfesorGUI extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Agregar Profesor");
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N

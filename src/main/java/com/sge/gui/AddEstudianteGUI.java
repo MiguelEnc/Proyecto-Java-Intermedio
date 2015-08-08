@@ -40,6 +40,7 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Agregar Estudiante");
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N

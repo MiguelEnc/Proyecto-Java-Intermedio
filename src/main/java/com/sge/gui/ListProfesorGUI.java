@@ -40,6 +40,7 @@ public class ListProfesorGUI extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Mostrar Profesores");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

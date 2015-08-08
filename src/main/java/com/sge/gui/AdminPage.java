@@ -15,6 +15,7 @@ import javax.swing.Box;
 public class AdminPage extends javax.swing.JFrame {
 
     String userName = "";
+    
     /**
      * Creates new form AdminPage
      */
@@ -191,9 +192,9 @@ public class AdminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AddProfesorGUI addProfGui = new AddProfesorGUI();
+        AddProfesorGUI addProfGui = AddProfesorGUI.getInstance();
         jDesktopPane1.add(addProfGui);
-        addProfGui.show();
+        addProfGui.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

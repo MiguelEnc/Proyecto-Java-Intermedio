@@ -42,6 +42,7 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Mostrar Estudiantes");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
