@@ -64,7 +64,6 @@ public class AdminPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administracion SGE");
         setExtendedState(MAXIMIZED_BOTH);
-        setSize(new java.awt.Dimension(600, 600));
 
         jMenu1.setText("Profesor");
 
@@ -196,6 +195,11 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenuItem11.setText("Gestionar");
         jMenuItem11.setToolTipText("Gestion de usuarios");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem11);
 
         jMenuBar1.add(jMenu6);
@@ -204,6 +208,11 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenuItem12.setText("Gestionar");
         jMenuItem12.setToolTipText("Gestion de grupos");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem12);
 
         jMenuBar1.add(jMenu7);
@@ -267,10 +276,29 @@ public class AdminPage extends javax.swing.JFrame {
         AddEstudianteGUI addEstGui = new AddEstudianteGUI();
         jDesktopPane1.add(addEstGui);
         addEstGui.show();
+        
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+    
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        
+        AddGrupo addgrupo = new AddGrupo();
+        jDesktopPane1.add(addgrupo);
+        addgrupo.show();
+        
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        
+        AddUsuario adduser=new AddUsuario();
+        jDesktopPane1.add(adduser);
+        adduser.show();
+        
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        
+  
         new Login().setVisible(true);
         this.dispose();
         

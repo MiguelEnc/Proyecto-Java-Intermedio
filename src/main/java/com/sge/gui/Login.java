@@ -137,8 +137,9 @@ public class Login extends javax.swing.JFrame {
             new AdminPage(user).setVisible(true);
             this.dispose();
         }
-        else if(user.equals("estudiante") && jPasswordField1.getText().equals("123")){
-            
+        else if(user.equals("estu") && jPasswordField1.getText().equals("123")){
+            new MenuEstudiante(user).setVisible(true);
+            this.dispose();
         }
         else{
             //JOption error message
