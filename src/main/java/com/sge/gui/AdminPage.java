@@ -58,6 +58,7 @@ public class AdminPage extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem13 = new javax.swing.JMenuItem();
 
@@ -206,7 +207,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenu7.setText("Grupo");
 
-        jMenuItem12.setText("Gestionar");
+        jMenuItem12.setText("Agregar");
         jMenuItem12.setToolTipText("Gestion de grupos");
         jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +215,14 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jMenu7.add(jMenuItem12);
+
+        jMenuItem16.setText("Gestionar");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem16);
 
         jMenuBar1.add(jMenu7);
 
@@ -346,6 +355,12 @@ public class AdminPage extends javax.swing.JFrame {
         lsHorGui.show();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        UserToGroup userGrupo = new UserToGroup();
+        jDesktopPane1.add(userGrupo);
+        userGrupo.show();
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
     /*
     public static void main(String args[]) {
         try {
@@ -387,6 +402,7 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

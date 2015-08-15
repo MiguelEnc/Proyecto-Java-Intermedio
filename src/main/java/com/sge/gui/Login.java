@@ -86,8 +86,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 20, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
@@ -144,9 +144,9 @@ public class Login extends javax.swing.JFrame {
         else{
             //JOption error message
             JOptionPane.showMessageDialog(this,
-    "Usuario o contrasena incorrectos.",
-    "Error de autenticacion",
-    JOptionPane.ERROR_MESSAGE);
+            "Usuario o contrasena incorrectos.",
+            "Error de autenticacion",
+            JOptionPane.ERROR_MESSAGE);
         }
                 
     }//GEN-LAST:event_jButton1ActionPerformed
