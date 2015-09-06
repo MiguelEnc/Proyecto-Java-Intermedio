@@ -43,8 +43,9 @@ public class MenuEstudiante extends javax.swing.JFrame {
         Pane1Desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
-        jMenuInscribir = new javax.swing.JMenuItem();
-        jMenuListar = new javax.swing.JMenuItem();
+        jMenuBuscar = new javax.swing.JMenuItem();
+        jMenuSecciones = new javax.swing.JMenu();
+        jMenuGestionar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuSeccionClose = new javax.swing.JMenuItem();
 
@@ -61,25 +62,29 @@ public class MenuEstudiante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
 
-        jMenu.setText("Materias");
+        jMenu.setText("Estudiante");
 
-        jMenuInscribir.setText("Inscribir");
-        jMenuInscribir.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBuscar.setText("Buscar");
+        jMenuBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuInscribirActionPerformed(evt);
+                jMenuBuscarActionPerformed(evt);
             }
         });
-        jMenu.add(jMenuInscribir);
-
-        jMenuListar.setText("Listar");
-        jMenuListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuListarActionPerformed(evt);
-            }
-        });
-        jMenu.add(jMenuListar);
+        jMenu.add(jMenuBuscar);
 
         jMenuBar1.add(jMenu);
+
+        jMenuSecciones.setText("Secciones");
+
+        jMenuGestionar.setText("Gestionar");
+        jMenuGestionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuGestionarActionPerformed(evt);
+            }
+        });
+        jMenuSecciones.add(jMenuGestionar);
+
+        jMenuBar1.add(jMenuSecciones);
 
         jMenu3.setText(this.username);
         jMenu3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -111,7 +116,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -125,24 +130,22 @@ public class MenuEstudiante extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuSeccionCloseActionPerformed
 
-    private void jMenuInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInscribirActionPerformed
+    private void jMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarActionPerformed
         // TODO add your handling code here:
         
-        InscripsionEstudienate inscribir=new InscripsionEstudienate();
-        Pane1Desktop.add(inscribir);
-        inscribir.show();
+        ListEstudianteGUI legui=new ListEstudianteGUI();
+        Pane1Desktop.add(legui);
+        legui.show();
         
-    }//GEN-LAST:event_jMenuInscribirActionPerformed
+    }//GEN-LAST:event_jMenuBuscarActionPerformed
 
-    private void jMenuListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListarActionPerformed
+    private void jMenuGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGestionarActionPerformed
         // TODO add your handling code here:
         
-        ListaInscritas listins=new ListaInscritas();
-        Pane1Desktop.add(listins);
-        listins.show();
-              
-        
-    }//GEN-LAST:event_jMenuListarActionPerformed
+        ListSesionGUI lsgui=new ListSesionGUI();
+        Pane1Desktop.add(lsgui);
+        lsgui.show();
+    }//GEN-LAST:event_jMenuGestionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,18 +183,19 @@ public class MenuEstudiante extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Pane1Desktop;
+    public javax.swing.JDesktopPane Pane1Desktop;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuInscribir;
+    private javax.swing.JMenuItem jMenuBuscar;
+    private javax.swing.JMenuItem jMenuGestionar;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuListar;
     private javax.swing.JMenuItem jMenuSeccionClose;
+    private javax.swing.JMenu jMenuSecciones;
     private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
