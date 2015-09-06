@@ -14,9 +14,20 @@ public class ListAulaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListAulaGUI
      */
-    public ListAulaGUI() {
+    private  static  ListAulaGUI instancia;
+    private ListAulaGUI() {
         initComponents();
     }
+    
+    public static ListAulaGUI getInstancia()
+    {
+        if(instancia==null)
+            instancia=new ListAulaGUI();
+        return instancia;
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

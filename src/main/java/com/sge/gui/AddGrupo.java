@@ -14,8 +14,16 @@ public class AddGrupo extends javax.swing.JInternalFrame {
     /**
      * Creates new form CrateGrupo
      */
-    public AddGrupo() {
+    private static AddGrupo instancia;
+    private AddGrupo() {
         initComponents();
+    }
+    
+    public static AddGrupo getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddGrupo();
+        return instancia;
     }
 
     /**

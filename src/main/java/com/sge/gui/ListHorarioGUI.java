@@ -14,8 +14,14 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListHorarioGUI
      */
-    public ListHorarioGUI() {
+    private ListHorarioGUI() {
         initComponents();
+    }
+    private static ListHorarioGUI instancia;
+    public static ListHorarioGUI getInstancia() {
+        if(instancia==null)
+            instancia=new ListHorarioGUI();
+        return instancia;
     }
 
     /**

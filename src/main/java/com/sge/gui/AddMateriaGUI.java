@@ -14,8 +14,15 @@ public class AddMateriaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddMateriaGUI
      */
-    public AddMateriaGUI() {
+    private AddMateriaGUI() {
         initComponents();
+    }
+    private static AddMateriaGUI instancia;
+    public static AddMateriaGUI getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddMateriaGUI();
+        return instancia;
     }
 
     /**

@@ -40,23 +40,30 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Materias"/>
+            <Property name="text" type="java.lang.String" value="Estudiante"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuInscribir">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuBuscar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Inscribir"/>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuInscribirActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuBuscarActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuListar">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuSecciones">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Secciones"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuGestionar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listar"/>
+                <Property name="text" type="java.lang.String" value="Gestionar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuListarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuGestionarActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -114,7 +121,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Pane1Desktop" pref="893" max="32767" attributes="0"/>
+              <Component id="Pane1Desktop" pref="559" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -123,7 +130,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Pane1Desktop" pref="382" max="32767" attributes="0"/>
+              <Component id="Pane1Desktop" pref="369" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -131,6 +138,10 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JDesktopPane" name="Pane1Desktop">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane()"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

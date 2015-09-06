@@ -14,9 +14,27 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     /**
      * Creates new form InscripsionEstudienate
      */
-    public InscripsionEstudienate() {
+    
+    private static InscripsionEstudienate instancia;
+           
+    private InscripsionEstudienate() {
         initComponents();
     }
+    
+    public static InscripsionEstudienate getInstance() {
+        
+        try {
+            if(instancia==null) {                
+                instancia=new InscripsionEstudienate();
+            }
+        } catch (Exception e) {
+            System.out.println("Siglenton Error:: "+ e);
+        }
+        
+        return instancia;
+    
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +61,8 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         ComboSecciones = new javax.swing.JComboBox();
         LabelCodigo = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelMatricula = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,17 +117,26 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
 
         LabelCodigo.setText("codigo");
 
+        jLabel8.setText("Estudiante:");
+
+        jLabelMatricula.setText("00-0000");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelMatricula)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ComboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -131,12 +160,15 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
                     .addComponent(LabelCodigo)
                     .addComponent(LabelProfesorName)
                     .addComponent(LabelHorario))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabelMatricula))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -169,7 +201,7 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonInscribir)
                     .addComponent(ButtonCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,5 +233,7 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelMatricula;
     // End of variables declaration//GEN-END:variables
 }

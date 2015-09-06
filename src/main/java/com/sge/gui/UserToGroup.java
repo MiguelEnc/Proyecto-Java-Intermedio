@@ -14,10 +14,17 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     /**
      * Creates new form GupoFrame
      */
-    public UserToGroup() {
+    private UserToGroup() {
         initComponents();
     }
-
+    private static UserToGroup instancia;
+    public static UserToGroup getInstancia() {
+        if(instancia==null)
+            instancia=new UserToGroup();
+        return instancia;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

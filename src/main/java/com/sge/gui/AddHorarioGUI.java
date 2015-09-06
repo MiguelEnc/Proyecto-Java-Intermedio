@@ -14,9 +14,18 @@ public class AddHorarioGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddHorarioGUI
      */
-    public AddHorarioGUI() {
+    private AddHorarioGUI() {
         initComponents();
     }
+    private  static AddHorarioGUI instancia;
+    public static AddHorarioGUI getInstancia() {
+        if(instancia==null)
+            instancia=new AddHorarioGUI();
+        return instancia;
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

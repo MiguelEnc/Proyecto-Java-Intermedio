@@ -14,8 +14,17 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddEstudianteGUI
      */
-    public AddEstudianteGUI() {
+    
+    private  static  AddEstudianteGUI instancia;
+    private AddEstudianteGUI() {
         initComponents();
+    }
+    
+    public static AddEstudianteGUI getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddEstudianteGUI();
+        return instancia;
     }
 
     /**

@@ -14,10 +14,17 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListMateriaGUI
      */
-    public ListMateriaGUI() {
+    private static  ListMateriaGUI instancia;
+    private ListMateriaGUI() {
         initComponents();
     }
-
+     public  static ListMateriaGUI getInstancia()
+     {
+         if(instancia==null)
+                instancia=new ListMateriaGUI();
+         return instancia;
+     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
