@@ -14,10 +14,18 @@ public class AddUsuario extends javax.swing.JInternalFrame {
     /**
      * Creates new form UsuarioFrame
      */
-    public AddUsuario() {
+    private  static  AddUsuario instancia;
+    private AddUsuario() {
         initComponents();
     }
 
+    public static AddUsuario getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddUsuario();
+        return instancia;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

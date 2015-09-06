@@ -14,10 +14,23 @@ public class ListProfesorGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListProfesorGUI
      */
-    public ListProfesorGUI() {
+    
+    private static ListProfesorGUI instancia;
+    
+    
+    
+    private ListProfesorGUI() {
         initComponents();
     }
 
+    public static ListProfesorGUI getInstacia() {
+    
+            if (instancia==null) 
+                instancia=new ListProfesorGUI();
+            return instancia;
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

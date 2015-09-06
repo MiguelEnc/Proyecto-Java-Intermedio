@@ -14,9 +14,27 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     /**
      * Creates new form InscripsionEstudienate
      */
-    public InscripsionEstudienate() {
+    
+    private static InscripsionEstudienate instancia;
+           
+    private InscripsionEstudienate() {
         initComponents();
     }
+    
+    public static InscripsionEstudienate getInstance() {
+        
+        try {
+            if(instancia==null) {                
+                instancia=new InscripsionEstudienate();
+            }
+        } catch (Exception e) {
+            System.out.println("Siglenton Error:: "+ e);
+        }
+        
+        return instancia;
+    
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

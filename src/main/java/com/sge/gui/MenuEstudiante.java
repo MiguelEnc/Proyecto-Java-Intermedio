@@ -7,6 +7,7 @@ package com.sge.gui;
 
 import javax.swing.Box;
 import javax.swing.JOptionPane;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -109,14 +110,14 @@ public class MenuEstudiante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
+                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addComponent(Pane1Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -129,22 +130,23 @@ public class MenuEstudiante extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_jMenuSeccionCloseActionPerformed
-
+ 
     private void jMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarActionPerformed
         // TODO add your handling code here:
         
-        ListEstudianteGUI legui=new ListEstudianteGUI();
-        Pane1Desktop.add(legui);
-        legui.show();
+       ListEstudianteGUI legui=ListEstudianteGUI.getInstance();
+        if(!legui.isVisible())
+            Pane1Desktop.add(legui);
+        legui.setVisible(true);
         
     }//GEN-LAST:event_jMenuBuscarActionPerformed
 
     private void jMenuGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuGestionarActionPerformed
         // TODO add your handling code here:
-        
-        ListSesionGUI lsgui=new ListSesionGUI();
-        Pane1Desktop.add(lsgui);
-        lsgui.show();
+        ListSesionGUI lsgui= ListSesionGUI.getInstance();
+        if(!lsgui.isVisible())
+            Pane1Desktop.add(lsgui);
+        lsgui.setVisible(true);
     }//GEN-LAST:event_jMenuGestionarActionPerformed
 
     /**

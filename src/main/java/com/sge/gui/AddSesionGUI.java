@@ -14,8 +14,16 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddSesionGUI
      */
-    public AddSesionGUI() {
+   private  static  AddSesionGUI instancia;
+    private AddSesionGUI() {
         initComponents();
+    }
+    
+    public static AddSesionGUI getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddSesionGUI();
+        return instancia;
     }
 
     /**

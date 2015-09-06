@@ -14,8 +14,16 @@ public class AddAulaGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddAulaGUI
      */
-    public AddAulaGUI() {
+    private  static  AddAulaGUI instancia;
+    private AddAulaGUI() {
         initComponents();
+    }
+    
+    public static AddAulaGUI getInstancia()
+    {
+        if(instancia==null)
+            instancia=new AddAulaGUI();
+        return instancia;
     }
 
     /**

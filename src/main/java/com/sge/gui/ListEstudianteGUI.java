@@ -18,12 +18,29 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListEstudianteGUI
      */
-    //MenuEstudiante me;
-    public ListEstudianteGUI() {
+    
+    private static ListEstudianteGUI instancia;
+           
+    private ListEstudianteGUI() {
         initComponents();
         //this.me=me;
     }
-
+    
+    public static ListEstudianteGUI getInstance() {
+        
+        try {
+            if(instancia==null) {                
+                instancia=new ListEstudianteGUI();
+            }
+        } catch (Exception e) {
+            System.out.println("Siglenton Error:: "+ e);
+        }
+        
+        return instancia;
+    
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,9 +156,12 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
     private void jButtonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscribirActionPerformed
         // TODO add your handling code here:
         
-        InscripsionEstudienate inscribir=new InscripsionEstudienate();
-        JDesktopPane desktopPane = getDesktopPane();
-        desktopPane.add(inscribir);
+        InscripsionEstudienate inscribir= InscripsionEstudienate.getInstance();
+        if(inscribir.isVisible())
+        {
+            JDesktopPane desktopPane = getDesktopPane();
+            desktopPane.add(inscribir);
+        }
         inscribir.setVisible(true);
         
         

@@ -14,9 +14,28 @@ public class ListSesionGUI extends javax.swing.JInternalFrame {
     /**
      * Creates new form ListSesionGUI
      */
-    public ListSesionGUI() {
+    
+    private static ListSesionGUI instancia;
+           
+    private ListSesionGUI() {
         initComponents();
+  
     }
+    
+    public static ListSesionGUI getInstance() {
+        
+        try {
+            if(instancia==null) {                
+                instancia=new ListSesionGUI();
+            }
+        } catch (Exception e) {
+            System.out.println("Siglenton Error:: "+ e);
+        }
+        
+        return instancia;
+    
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

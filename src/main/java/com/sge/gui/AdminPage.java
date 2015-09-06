@@ -49,7 +49,7 @@ public class AdminPage extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuSesionGestionar = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
@@ -157,9 +157,14 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenu5.setText("Sesion");
 
-        jMenuItem9.setText("Gestionar");
-        jMenuItem9.setToolTipText("Muestra listado de sesiones");
-        jMenu5.add(jMenuItem9);
+        jMenuSesionGestionar.setText("Gestionar");
+        jMenuSesionGestionar.setToolTipText("Muestra listado de sesiones");
+        jMenuSesionGestionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSesionGestionarActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuSesionGestionar);
 
         jMenuItem10.setText("Agregar");
         jMenuItem10.setToolTipText("Agregar sesion");
@@ -265,25 +270,29 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         AddProfesorGUI addProfGui = AddProfesorGUI.getInstance();
-        jDesktopPane1.add(addProfGui);
+        if(!addProfGui.isVisible())
+            jDesktopPane1.add(addProfGui);
         addProfGui.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        ListProfesorGUI lsProfGui = new ListProfesorGUI();
-        jDesktopPane1.add(lsProfGui);
+        ListProfesorGUI lsProfGui = ListProfesorGUI.getInstacia();
+        if(!lsProfGui.isVisible())
+            jDesktopPane1.add(lsProfGui);
         lsProfGui.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        ListEstudianteGUI lsEstGui = new ListEstudianteGUI();
-        jDesktopPane1.add(lsEstGui);
-        lsEstGui.show();
+        ListEstudianteGUI lsEstGui = ListEstudianteGUI.getInstance();
+        if (!lsEstGui.isVisible())
+            jDesktopPane1.add(lsEstGui);
+        lsEstGui.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        AddEstudianteGUI addEstGui = new AddEstudianteGUI();
-        jDesktopPane1.add(addEstGui);
+        AddEstudianteGUI addEstGui = AddEstudianteGUI.getInstancia();
+         if(!addEstGui.isVisible())
+            jDesktopPane1.add(addEstGui);
         addEstGui.show();
         
     }//GEN-LAST:event_jMenuItem4ActionPerformed
@@ -291,8 +300,9 @@ public class AdminPage extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
         
-        AddGrupo addgrupo = new AddGrupo();
-        jDesktopPane1.add(addgrupo);
+        AddGrupo addgrupo = AddGrupo.getInstancia();
+        if(!addgrupo.isVisible())
+            jDesktopPane1.add(addgrupo);
         addgrupo.show();
         
     }//GEN-LAST:event_jMenuItem12ActionPerformed
@@ -300,8 +310,9 @@ public class AdminPage extends javax.swing.JFrame {
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
         
-        AddUsuario adduser=new AddUsuario();
-        jDesktopPane1.add(adduser);
+        AddUsuario adduser= AddUsuario.getInstancia();
+         if(!adduser.isVisible())
+            jDesktopPane1.add(adduser);
         adduser.show();
         
     }//GEN-LAST:event_jMenuItem11ActionPerformed
@@ -314,52 +325,68 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        AddMateriaGUI addMatGui = new AddMateriaGUI();
-        jDesktopPane1.add(addMatGui);
+        AddMateriaGUI addMatGui =  AddMateriaGUI.getInstancia();
+        if(!addMatGui.isVisible())
+            jDesktopPane1.add(addMatGui);
         addMatGui.show();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        AddAulaGUI addAulGui = new AddAulaGUI();
-        jDesktopPane1.add(addAulGui);
+        AddAulaGUI addAulGui =  AddAulaGUI.getInstancia();
+        if(!addAulGui.isVisible())
+            jDesktopPane1.add(addAulGui);
         addAulGui.show();
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        AddSesionGUI addSecGui = new AddSesionGUI();
-        jDesktopPane1.add(addSecGui);
+        AddSesionGUI addSecGui =  AddSesionGUI.getInstancia();
+        if(!addSecGui.isVisible())
+            jDesktopPane1.add(addSecGui);
         addSecGui.show();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        ListMateriaGUI lsMatGui = new ListMateriaGUI();
-        jDesktopPane1.add(lsMatGui);
+        ListMateriaGUI lsMatGui =  ListMateriaGUI.getInstancia();
+        if(!lsMatGui.isVisible())
+            jDesktopPane1.add(lsMatGui);
         lsMatGui.show();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        ListAulaGUI lsAulGui = new ListAulaGUI();
-        jDesktopPane1.add(lsAulGui);
+        ListAulaGUI lsAulGui =  ListAulaGUI.getInstancia();
+        if(!lsAulGui.isVisible())
+            jDesktopPane1.add(lsAulGui);
         lsAulGui.show();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        AddHorarioGUI addHorGui = new AddHorarioGUI();
-        jDesktopPane1.add(addHorGui);
+        AddHorarioGUI addHorGui =  AddHorarioGUI.getInstancia();
+        if(!addHorGui.isVisible())
+            jDesktopPane1.add(addHorGui);
         addHorGui.show();
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        ListHorarioGUI lsHorGui = new ListHorarioGUI();
-        jDesktopPane1.add(lsHorGui);
+        ListHorarioGUI lsHorGui =  ListHorarioGUI.getInstancia();
+        if(!lsHorGui.isVisible())
+            jDesktopPane1.add(lsHorGui);
         lsHorGui.show();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        UserToGroup userGrupo = new UserToGroup();
-        jDesktopPane1.add(userGrupo);
+        UserToGroup userGrupo =  UserToGroup.getInstancia();
+        if(!userGrupo.isVisible())
+            jDesktopPane1.add(userGrupo);
         userGrupo.show();
     }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuSesionGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSesionGestionarActionPerformed
+        
+        ListSesionGUI lsgui= ListSesionGUI.getInstance();
+        if(!lsgui.isVisible())
+            jDesktopPane1.add(lsgui);
+        lsgui.setVisible(true);
+    }//GEN-LAST:event_jMenuSesionGestionarActionPerformed
 
     /*
     public static void main(String args[]) {
@@ -410,6 +437,6 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuSesionGestionar;
     // End of variables declaration//GEN-END:variables
 }
