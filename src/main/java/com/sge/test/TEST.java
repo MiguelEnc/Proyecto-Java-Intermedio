@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.test;
 
 import com.sge.bs.DaoEnum;
@@ -20,6 +14,8 @@ import com.sge.util.ConnectionDB;
 import com.sge.util.ManageUtil;
 import java.util.Date;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 /**
  *
@@ -28,7 +24,7 @@ import javax.persistence.EntityManager;
 public class TEST {
     
     public static void main(String[] args) {
-        
+        /*
         Profesor p=new Profesor();
         p.setApellido("Martinez");
         p.setNombre("Juan");
@@ -69,6 +65,16 @@ public class TEST {
 //        sesionDao.save(s);
         
         System.out.println("Done!!");
+        
+        */
+        
+        
+        EntityManagerFactory factory = ConnectionDB.getInstance();
+        System.out.println("Connection open: " + factory.isOpen());
+        
+        EntityManager em = factory.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        
         
     }
     

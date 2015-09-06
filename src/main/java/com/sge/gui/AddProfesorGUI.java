@@ -21,8 +21,13 @@ public class AddProfesorGUI extends javax.swing.JInternalFrame {
 
     //Singleton Pattern implementation
     public static AddProfesorGUI getInstance(){
-        if(INSTANCE == null){
-            INSTANCE = new AddProfesorGUI();
+        try{
+            if(INSTANCE == null){
+                INSTANCE = new AddProfesorGUI();
+            }
+        }
+        catch(Exception e){
+            System.out.println("Singleton Error: " + e);
         }
         
         return INSTANCE;

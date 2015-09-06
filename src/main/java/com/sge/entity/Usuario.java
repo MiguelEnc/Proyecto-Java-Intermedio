@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.entity;
 
 import java.io.Serializable;
@@ -38,12 +32,15 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
+    
     @Size(max = 25)
     @Column(name = "nombre_usuario")
     private String nombreUsuario;
+    
     @Size(max = 15)
     @Column(name = "clave")
     private String clave;
+    
     @Size(max = 1)
     @Column(name = "status")
     private String status;

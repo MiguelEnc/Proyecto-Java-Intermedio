@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.entity;
 
 import java.io.Serializable;
@@ -47,23 +41,31 @@ public class Sesion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Column(name = "materia_id")
     private Integer materiaId;
+    
     @Column(name = "profesor_id")
     private Integer profesorId;
+    
     @Column(name = "fecha_inicio")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
+    
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
+    
     @Size(max = 20)
     @Column(name = "codigo")
     private String codigo;
+    
     @Column(name = "aula_id")
     private Integer aulaId;
+    
     @Column(name = "capacidad")
     private Integer capacidad;
+    
     @Size(max = 1)
     @Column(name = "status")
     private String status;
