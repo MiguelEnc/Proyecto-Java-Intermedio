@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.dao.impl;
 
 import com.sge.dao.RegistroDao;
 import com.sge.entity.Registro;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -18,31 +13,46 @@ import javax.persistence.Query;
  */
 public class RegistroDaoImpl implements RegistroDao{
 
-    public void save(Registro entity) {
-        // write your code here
+    public EntityTransaction et;
     
+    List<Registro> registros;
+    
+    public RegistroDaoImpl(){
+        registros = new ArrayList<Registro>();
+        et = em.getTransaction();
+    }
+    
+    public void save(Registro entity) {
+        et.begin();
+        em.persist(entity);
+        et.commit();
+        System.out.println("Registro guardado.");
     }
 
     public void update(Registro entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.merge(entity);
+        et.commit();
+        System.out.println("Registro actualizado.");
     }
 
     public void delete(Registro entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.remove(em.merge(entity));
+        et.commit();
+        System.out.println("Registro borrado.");
     }
 
     public Registro findEntity(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Registro) em.find(Registro.class, id);
     }
 
     public List<Registro> getAll() {
-        return null; // write your code here
-    
+        //TODO: Implementar
+        return registros;
     }
 
     public List<Registro> getRegistrosBySesion(int sesion) {
         return null;
-    
     }
-    
 }

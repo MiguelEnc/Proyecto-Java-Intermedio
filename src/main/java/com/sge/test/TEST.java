@@ -72,8 +72,8 @@ public class TEST {
         EntityManagerFactory factory = ConnectionDB.getInstance();
         System.out.println("Connection open: " + factory.isOpen());
         
-        EntityManager em = factory.createEntityManager();
-        EntityTransaction et = em.getTransaction();
+        //EntityManager em = factory.createEntityManager();
+        //EntityTransaction et = em.getTransaction();
         
         
     }

@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.dao.impl;
 
 import com.sge.dao.SesionDao;
 import com.sge.entity.Sesion;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -18,33 +13,47 @@ import javax.persistence.Query;
  */
 public class SesionDaoImpl implements SesionDao {
 
-    public void save(Sesion entity) {
-       // write your code here
+    public EntityTransaction et;
     
+    List<Sesion> sesiones;
+    
+    public SesionDaoImpl(){
+        sesiones = new ArrayList<Sesion>();
+        et = em.getTransaction();
+    }
+    
+    public void save(Sesion entity) {
+        et.begin();
+        em.persist(entity);
+        et.commit();
+        System.out.println("Sesion guardada.");
     }
 
     public void update(Sesion entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.merge(entity);
+        et.commit();
+        System.out.println("Sesion actualizada.");
     }
 
     public void delete(Sesion entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.remove(em.merge(entity));
+        et.commit();
+        System.out.println("Sesion borrada.");
     }
 
     public Sesion findEntity(Integer id) {
-        return null;// write your code here
-    
+        return (Sesion) em.find(Sesion.class, id);
     }
 
     public List<Sesion> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TODO: Implementar
+        return sesiones;
     }
 
     public Sesion findByMateriaId(Integer materiaId) {
-        
-        
         return null; // write your code here
-    
     }
     
 }

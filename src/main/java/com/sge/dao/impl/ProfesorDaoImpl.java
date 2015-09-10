@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.dao.impl;
 
-import com.sge.dao.ServiceDao;
 import com.sge.dao.ProfesorDao;
+import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.Profesor;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 
@@ -18,27 +13,43 @@ import javax.persistence.EntityTransaction;
  */
 public class ProfesorDaoImpl implements ProfesorDao {
     
-    private EntityTransaction tx;
+    private EntityTransaction et;
 
-    public void save(Profesor entity) {
-        // write your code here
+    List<Profesor> profesores;
     
+    public ProfesorDaoImpl(){
+        profesores = new ArrayList<Profesor>();
+        et = em.getTransaction();
+    }
+    
+    public void save(Profesor entity) {
+        et.begin();
+        em.persist(entity);
+        et.commit();
+        System.out.println("Profesor guardado.");
     }
 
     public void update(Profesor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.merge(entity);
+        et.commit();
+        System.out.println("Profesor actualizado.");
     }
 
     public void delete(Profesor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        et.begin();
+        em.remove(em.merge(entity));
+        et.commit();
+        System.out.println("Profesor borrado.");
     }
 
     public Profesor findEntity(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (Profesor) em.find(Profesor.class, id);
     }
 
     public List<Profesor> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TODO: implementar
+        return profesores;
     }
     
 }
