@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.bs;
 
 
 import com.sge.dao.ServiceDao;
 import com.sge.dao.impl.AulaDaoImpl;
 import com.sge.dao.impl.EstudianteDaoImpl;
+import com.sge.dao.impl.GrupoDaoImpl;
+import com.sge.dao.impl.GrupoUsuarioDaoImpl;
+import com.sge.dao.impl.HorarioDaoImpl;
+import com.sge.dao.impl.HorarioSesionDaoImpl;
+import com.sge.dao.impl.MateriaDaoImpl;
 import com.sge.dao.impl.ProfesorDaoImpl;
 import com.sge.dao.impl.RegistroDaoImpl;
 import com.sge.dao.impl.SesionDaoImpl;
+import com.sge.dao.impl.UsuarioDaoImpl;
 
 /**
  *
@@ -29,27 +29,27 @@ public class DaoFactory {
                 break;
                 
             case ESTUDIANTE:
-                //service = new EstudianteDaoImpl();
+                service = new EstudianteDaoImpl();
                 break;
                 
             case GRUPO:
-                //service = new GrupoDaoImpl();
+                service = new GrupoDaoImpl();
                 break;
                 
             case GRUPOUSUARIO:
-                //service = new GrupoUsuarioDaoImpl();
+                service = new GrupoUsuarioDaoImpl();
                 break;
                 
             case HORARIO:
-                //service = new HorarioDaoImpl();
+                service = new HorarioDaoImpl();
                 break;
                 
             case HORARIOSESION:
-                //service = new HorarioSesionDaoImpl();
+                service = new HorarioSesionDaoImpl();
                 break;
                 
             case MATERIA:
-                //service = new MateriaDaoImpl();
+                service = new MateriaDaoImpl();
                 break;
                 
             case PROFESOR:
@@ -65,7 +65,7 @@ public class DaoFactory {
                 break;
                 
             case USUARIO:
-                //service=new UsuarioDaoImpl();
+                service=new UsuarioDaoImpl();
                 break;
         }
         
