@@ -1,10 +1,11 @@
 package com.sge.dao.impl;
 
 import com.sge.dao.HorarioDao;
+import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.Horario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,10 +15,7 @@ public class HorarioDaoImpl implements HorarioDao{
 
     public EntityTransaction et;
     
-    List<Horario> horarios;
-    
     public HorarioDaoImpl(){
-        horarios = new ArrayList<Horario>();
         et = em.getTransaction();
     }
     
@@ -47,8 +45,8 @@ public class HorarioDaoImpl implements HorarioDao{
     }
 
     public List<Horario> getAll() {
-        //TODO: Implementar
-        return horarios;
+        Query query = em.createNamedQuery("Horario.findAll");
+        return query.getResultList();
     }
     
 }

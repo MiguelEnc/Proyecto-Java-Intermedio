@@ -2,7 +2,6 @@ package com.sge.dao.impl;
 
 import com.sge.dao.SesionDao;
 import com.sge.entity.Sesion;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -15,10 +14,7 @@ public class SesionDaoImpl implements SesionDao {
 
     public EntityTransaction et;
     
-    List<Sesion> sesiones;
-    
     public SesionDaoImpl(){
-        sesiones = new ArrayList<Sesion>();
         et = em.getTransaction();
     }
     
@@ -48,12 +44,13 @@ public class SesionDaoImpl implements SesionDao {
     }
 
     public List<Sesion> getAll() {
-        //TODO: Implementar
-        return sesiones;
+        Query query = em.createNamedQuery("Sesion.findAll");
+        return query.getResultList();
     }
 
     public Sesion findByMateriaId(Integer materiaId) {
-        return null; // write your code here
+        Query query = em.createNamedQuery("Sesion.findByMateriaId");
+        return (Sesion) query.getSingleResult();
     }
     
 }

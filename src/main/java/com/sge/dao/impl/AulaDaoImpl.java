@@ -2,9 +2,9 @@ package com.sge.dao.impl;
 
 import com.sge.dao.AulaDao;
 import com.sge.entity.Aula;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,11 +14,8 @@ public class AulaDaoImpl implements AulaDao{
     
     
     private EntityTransaction et;
-
-    List<Aula> aulas;
     
     public AulaDaoImpl(){
-        aulas = new ArrayList<Aula>();
         et = em.getTransaction();
     }
     
@@ -48,8 +45,8 @@ public class AulaDaoImpl implements AulaDao{
     }
 
     public List<Aula> getAll() {
-        //TODO: implementar
-        return aulas;
+        Query query = em.createNamedQuery("Aula.findAll");
+        return query.getResultList();
     }
     
 }

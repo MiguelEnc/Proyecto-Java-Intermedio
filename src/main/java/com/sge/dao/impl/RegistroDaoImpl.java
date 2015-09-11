@@ -2,7 +2,6 @@ package com.sge.dao.impl;
 
 import com.sge.dao.RegistroDao;
 import com.sge.entity.Registro;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -15,10 +14,7 @@ public class RegistroDaoImpl implements RegistroDao{
 
     public EntityTransaction et;
     
-    List<Registro> registros;
-    
     public RegistroDaoImpl(){
-        registros = new ArrayList<Registro>();
         et = em.getTransaction();
     }
     
@@ -48,11 +44,12 @@ public class RegistroDaoImpl implements RegistroDao{
     }
 
     public List<Registro> getAll() {
-        //TODO: Implementar
-        return registros;
+        Query query = em.createNamedQuery("Registro.findAll");
+        return query.getResultList();
     }
 
     public List<Registro> getRegistrosBySesion(int sesion) {
-        return null;
+        Query query = em.createNamedQuery("Registro.findByHorarioSesionId");
+        return query.getResultList();
     }
 }

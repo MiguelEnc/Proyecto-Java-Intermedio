@@ -1,10 +1,11 @@
 package com.sge.dao.impl;
 
 import com.sge.dao.EstudianteDao;
+import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.Estudiante;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,10 +15,7 @@ public class EstudianteDaoImpl implements EstudianteDao{
 
     private EntityTransaction et;
     
-    List<Estudiante> estudiantes;
-    
     public EstudianteDaoImpl(){
-        estudiantes = new ArrayList<Estudiante>();
         et = em.getTransaction();
     }
     
@@ -47,7 +45,7 @@ public class EstudianteDaoImpl implements EstudianteDao{
     }
 
     public List<Estudiante> getAll() {
-        //TODO:implementar
-        return estudiantes;
+        Query query = em.createNamedQuery("Estudiante.findAll");
+        return query.getResultList();
     }    
 }

@@ -1,10 +1,11 @@
 package com.sge.dao.impl;
 
 import com.sge.dao.MateriaDao;
+import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.Materia;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -14,10 +15,7 @@ public class MateriaDaoImpl implements MateriaDao{
 
     public EntityTransaction et;
     
-    List<Materia> materias;
-    
     public MateriaDaoImpl(){
-        materias = new ArrayList<Materia>();
         et = em.getTransaction();
     }
     
@@ -47,8 +45,8 @@ public class MateriaDaoImpl implements MateriaDao{
     }
 
     public List<Materia> getAll() {
-        //TODO: implementar
-        return materias;
+        Query query = em.createNamedQuery("Materia.findAll");
+        return query.getResultList();
     }
     
 }

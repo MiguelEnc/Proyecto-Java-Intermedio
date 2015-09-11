@@ -1,10 +1,11 @@
 package com.sge.dao.impl;
 
 import com.sge.dao.GrupoUsuarioDao;
+import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.GrupoUsuario;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -13,11 +14,8 @@ import javax.persistence.EntityTransaction;
 public class GrupoUsuarioDaoImpl implements GrupoUsuarioDao{
     
     public EntityTransaction et;
-    
-    List<GrupoUsuario> gruposUsuarios;
 
     public GrupoUsuarioDaoImpl() {
-        gruposUsuarios = new ArrayList<GrupoUsuario>();
         et = em.getTransaction();
     }
     
@@ -47,8 +45,8 @@ public class GrupoUsuarioDaoImpl implements GrupoUsuarioDao{
     }
 
     public List<GrupoUsuario> getAll() {
-        //TODO:Implementar
-        return gruposUsuarios;
+        Query query = em.createNamedQuery("GrupoUsuario.findAll");
+        return query.getResultList();
     }
     
 }

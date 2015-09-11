@@ -3,9 +3,9 @@ package com.sge.dao.impl;
 import com.sge.dao.ProfesorDao;
 import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.Profesor;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 /**
  *
@@ -15,10 +15,7 @@ public class ProfesorDaoImpl implements ProfesorDao {
     
     private EntityTransaction et;
 
-    List<Profesor> profesores;
-    
     public ProfesorDaoImpl(){
-        profesores = new ArrayList<Profesor>();
         et = em.getTransaction();
     }
     
@@ -48,8 +45,8 @@ public class ProfesorDaoImpl implements ProfesorDao {
     }
 
     public List<Profesor> getAll() {
-        //TODO: implementar
-        return profesores;
+        Query query = em.createNamedQuery("Profesor.findAll");
+        return query.getResultList();
     }
     
 }
