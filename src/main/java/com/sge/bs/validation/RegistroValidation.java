@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.sge.bs.validation;
 
 import com.sge.bs.DaoEnum;
@@ -30,10 +24,7 @@ public class RegistroValidation implements Validation<Registro> {
 
     private boolean validate(Registro reg) {
         
-        
         return true; // write your code here
-        
-    
     }
     
     

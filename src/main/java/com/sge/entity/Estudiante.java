@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "estudiante", catalog = "escuela", schema = "")
+@Table(name = "estudiante")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Estudiante.findAll", query = "SELECT e FROM Estudiante e"),
@@ -35,26 +34,17 @@ public class Estudiante implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
-    @Size(max = 45)
     @Column(name = "nombre")
     private String nombre;
-    
-    @Size(max = 45)
     @Column(name = "apellido")
     private String apellido;
-    
-    @Size(max = 45)
     @Column(name = "matricula")
     private String matricula;
-    
-    @Size(max = 45)
     @Column(name = "correo")
     private String correo;
-    
-    @Size(max = 1)
     @Column(name = "status")
     private String status;
+    
 
     public Estudiante() {
     }
@@ -133,7 +123,7 @@ public class Estudiante implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.Estudiante[ id=" + id + " ]";
+        return "testjpa.Estudiante[ id=" + id + " ]";
     }
     
 }

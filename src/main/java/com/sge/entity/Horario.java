@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "horario", catalog = "escuela", schema = "")
+@Table(name = "horario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h"),
@@ -32,14 +31,11 @@ public class Horario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
-    @Size(max = 45)
     @Column(name = "descripcion")
     private String descripcion;
-    
-    @Size(max = 1)
     @Column(name = "status")
     private String status;
+   
 
     public Horario() {
     }
@@ -94,7 +90,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.Horario[ id=" + id + " ]";
+        return "testjpa.Horario[ id=" + id + " ]";
     }
     
 }

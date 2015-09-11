@@ -2,15 +2,17 @@ package com.sge.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -18,13 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "registro", catalog = "escuela", schema = "")
+@Table(name = "registro")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Registro.findAll", query = "SELECT r FROM Registro r"),
     @NamedQuery(name = "Registro.findById", query = "SELECT r FROM Registro r WHERE r.id = :id"),
-    @NamedQuery(name = "Registro.findByEstudianteId", query = "SELECT r FROM Registro r WHERE r.estudianteId = :estudianteId"),
-    @NamedQuery(name = "Registro.findByHorarioSesionId", query = "SELECT r FROM Registro r WHERE r.horarioSesionId = :horarioSesionId"),
+    @NamedQuery(name = "Registro.findByEstudiante", query = "SELECT r FROM Registro r WHERE r.estudiante.id = :estudiante"),
+    @NamedQuery(name = "Registro.findByHorarioSesion", query = "SELECT r FROM Registro r WHERE r.horarioSesion.id = :horarioSesion"),
     @NamedQuery(name = "Registro.findByStatus", query = "SELECT r FROM Registro r WHERE r.status = :status")})
 public class Registro implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -33,14 +35,12 @@ public class Registro implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
-    @Column(name = "estudiante_id")
-    private Integer estudianteId;
-    
-    @Column(name = "horario_sesion_id")
-    private Integer horarioSesionId;
-    
-    @Size(max = 1)
+    @JoinColumn(name = "estudiante")    
+    @ManyToOne(cascade = CascadeType.ALL)  
+    private Estudiante estudiante;
+    @JoinColumn(name = "horario_sesion")   
+    @ManyToOne(cascade = CascadeType.ALL)
+    private HorarioSesion horarioSesion;
     @Column(name = "status")
     private String status;
 
@@ -59,20 +59,20 @@ public class Registro implements Serializable {
         this.id = id;
     }
 
-    public Integer getEstudianteId() {
-        return estudianteId;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setEstudianteId(Integer estudianteId) {
-        this.estudianteId = estudianteId;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
 
-    public Integer getHorarioSesionId() {
-        return horarioSesionId;
+    public HorarioSesion getHorarioSesion() {
+        return horarioSesion;
     }
 
-    public void setHorarioSesionId(Integer horarioSesionId) {
-        this.horarioSesionId = horarioSesionId;
+    public void setHorarioSesion(HorarioSesion horarioSesion) {
+        this.horarioSesion = horarioSesion;
     }
 
     public String getStatus() {
@@ -105,7 +105,7 @@ public class Registro implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.Registro[ id=" + id + " ]";
+        return "testjpa.Registro[ id=" + id + " ]";
     }
     
 }

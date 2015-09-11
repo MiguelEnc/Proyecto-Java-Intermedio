@@ -50,6 +50,7 @@ public class SesionDaoImpl implements SesionDao {
 
     public Sesion findByMateriaId(Integer materiaId) {
         Query query = em.createNamedQuery("Sesion.findByMateriaId");
+        query.setParameter("materiaId", materiaId);
         return (Sesion) query.getSingleResult();
     }
     

@@ -2,13 +2,15 @@ package com.sge.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,26 +18,25 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "grupo_usuario", catalog = "escuela", schema = "")
+@Table(name = "grupo_usuario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "GrupoUsuario.findAll", query = "SELECT g FROM GrupoUsuario g"),
     @NamedQuery(name = "GrupoUsuario.findById", query = "SELECT g FROM GrupoUsuario g WHERE g.id = :id"),
-    @NamedQuery(name = "GrupoUsuario.findByGrupoId", query = "SELECT g FROM GrupoUsuario g WHERE g.grupoId = :grupoId"),
-    @NamedQuery(name = "GrupoUsuario.findByUsuarioId", query = "SELECT g FROM GrupoUsuario g WHERE g.usuarioId = :usuarioId")})
+    @NamedQuery(name = "GrupoUsuario.findByGrupo", query = "SELECT g FROM GrupoUsuario g WHERE g.grupo.id = :grupo"),
+    @NamedQuery(name = "GrupoUsuario.findByUsuario", query = "SELECT g FROM GrupoUsuario g WHERE g.usuario.id = :usuario")})
 public class GrupoUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
-    
-    @Column(name = "grupo_id")
-    private Integer grupoId;
-    
-    @Column(name = "usuario_id")
-    private Integer usuarioId;
+    @JoinColumn(name = "grupo")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Grupo grupo;
+    @JoinColumn(name = "usuario")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Usuario usuario;
 
     public GrupoUsuario() {
     }
@@ -52,20 +53,20 @@ public class GrupoUsuario implements Serializable {
         this.id = id;
     }
 
-    public Integer getGrupoId() {
-        return grupoId;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setGrupoId(Integer grupoId) {
-        this.grupoId = grupoId;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
-    public Integer getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarioId(Integer usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
@@ -90,7 +91,7 @@ public class GrupoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.GrupoUsuario[ id=" + id + " ]";
+        return "testjpa.GrupoUsuario[ id=" + id + " ]";
     }
     
 }

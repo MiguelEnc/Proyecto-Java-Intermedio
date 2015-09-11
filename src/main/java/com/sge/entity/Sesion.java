@@ -3,17 +3,19 @@ package com.sge.entity;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,17 +23,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "sesion", catalog = "escuela", schema = "")
+@Table(name = "sesion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Sesion.findAll", query = "SELECT s FROM Sesion s"),
     @NamedQuery(name = "Sesion.findById", query = "SELECT s FROM Sesion s WHERE s.id = :id"),
-    @NamedQuery(name = "Sesion.findByMateriaId", query = "SELECT s FROM Sesion s WHERE s.materiaId = :materiaId"),
-    @NamedQuery(name = "Sesion.findByProfesorId", query = "SELECT s FROM Sesion s WHERE s.profesorId = :profesorId"),
+    @NamedQuery(name = "Sesion.findByMateriaId", query = "SELECT s FROM Sesion s WHERE s.materiaId.id = :materiaId"),
+    @NamedQuery(name = "Sesion.findByProfesorId", query = "SELECT s FROM Sesion s WHERE s.profesorId.id = :profesorId"),
     @NamedQuery(name = "Sesion.findByFechaInicio", query = "SELECT s FROM Sesion s WHERE s.fechaInicio = :fechaInicio"),
     @NamedQuery(name = "Sesion.findByFechaFin", query = "SELECT s FROM Sesion s WHERE s.fechaFin = :fechaFin"),
     @NamedQuery(name = "Sesion.findByCodigo", query = "SELECT s FROM Sesion s WHERE s.codigo = :codigo"),
-    @NamedQuery(name = "Sesion.findByAulaId", query = "SELECT s FROM Sesion s WHERE s.aulaId = :aulaId"),
+    @NamedQuery(name = "Sesion.findByAulaId", query = "SELECT s FROM Sesion s WHERE s.aulaId.id = :aulaId"),
     @NamedQuery(name = "Sesion.findByCapacidad", query = "SELECT s FROM Sesion s WHERE s.capacidad = :capacidad"),
     @NamedQuery(name = "Sesion.findByStatus", query = "SELECT s FROM Sesion s WHERE s.status = :status")})
 public class Sesion implements Serializable {
@@ -41,34 +43,28 @@ public class Sesion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    
-    @Column(name = "materia_id")
-    private Integer materiaId;
-    
-    @Column(name = "profesor_id")
-    private Integer profesorId;
-    
+    @JoinColumn(name = "materia_id")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Materia materiaId;
+    @JoinColumn(name = "profesor_id")   
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Profesor profesorId;
     @Column(name = "fecha_inicio")
     @Temporal(TemporalType.DATE)
     private Date fechaInicio;
-    
     @Column(name = "fecha_fin")
     @Temporal(TemporalType.DATE)
     private Date fechaFin;
-    
-    @Size(max = 20)
     @Column(name = "codigo")
     private String codigo;
-    
-    @Column(name = "aula_id")
-    private Integer aulaId;
-    
+    @JoinColumn(name = "aula_id")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Aula aulaId;
     @Column(name = "capacidad")
     private Integer capacidad;
-    
-    @Size(max = 1)
     @Column(name = "status")
     private String status;
+    
 
     public Sesion() {
     }
@@ -85,19 +81,19 @@ public class Sesion implements Serializable {
         this.id = id;
     }
 
-    public Integer getMateriaId() {
+    public Materia getMateriaId() {
         return materiaId;
     }
 
-    public void setMateriaId(Integer materiaId) {
+    public void setMateriaId(Materia materiaId) {
         this.materiaId = materiaId;
     }
 
-    public Integer getProfesorId() {
+    public Profesor getProfesorId() {
         return profesorId;
     }
 
-    public void setProfesorId(Integer profesorId) {
+    public void setProfesorId(Profesor profesorId) {
         this.profesorId = profesorId;
     }
 
@@ -125,11 +121,11 @@ public class Sesion implements Serializable {
         this.codigo = codigo;
     }
 
-    public Integer getAulaId() {
+    public Aula getAulaId() {
         return aulaId;
     }
 
-    public void setAulaId(Integer aulaId) {
+    public void setAulaId(Aula aulaId) {
         this.aulaId = aulaId;
     }
 
@@ -171,7 +167,7 @@ public class Sesion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.Sesion[ id=" + id + " ]";
+        return "testjpa.Sesion[ id=" + id + " ]";
     }
     
 }

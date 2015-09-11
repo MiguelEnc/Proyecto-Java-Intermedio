@@ -2,11 +2,14 @@ package com.sge.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -17,13 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Usuario
  */
 @Entity
-@Table(name = "horario_sesion", catalog = "escuela", schema = "")
+@Table(name = "horario_sesion")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "HorarioSesion.findAll", query = "SELECT h FROM HorarioSesion h"),
     @NamedQuery(name = "HorarioSesion.findById", query = "SELECT h FROM HorarioSesion h WHERE h.id = :id"),
-    @NamedQuery(name = "HorarioSesion.findBySesionId", query = "SELECT h FROM HorarioSesion h WHERE h.sesionId = :sesionId"),
-    @NamedQuery(name = "HorarioSesion.findByHorarioId", query = "SELECT h FROM HorarioSesion h WHERE h.horarioId = :horarioId")})
+    @NamedQuery(name = "HorarioSesion.findBySesion", query = "SELECT h FROM HorarioSesion h WHERE h.sesion.id = :sesion"),
+    @NamedQuery(name = "HorarioSesion.findByHorario", query = "SELECT h FROM HorarioSesion h WHERE h.horario.id = :horario")})
 public class HorarioSesion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,12 +34,13 @@ public class HorarioSesion implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @JoinColumn(name = "sesion")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Sesion sesion;
+    @JoinColumn(name = "horario")    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Horario horario;
     
-    @Column(name = "sesion_id")
-    private Integer sesionId;
-    
-    @Column(name = "horario_id")
-    private Integer horarioId;
 
     public HorarioSesion() {
     }
@@ -53,20 +57,20 @@ public class HorarioSesion implements Serializable {
         this.id = id;
     }
 
-    public Integer getSesionId() {
-        return sesionId;
+    public Sesion getSesion() {
+        return sesion;
     }
 
-    public void setSesionId(Integer sesionId) {
-        this.sesionId = sesionId;
+    public void setSesion(Sesion sesion) {
+        this.sesion = sesion;
     }
 
-    public Integer getHorarioId() {
-        return horarioId;
+    public Horario getHorario() {
+        return horario;
     }
 
-    public void setHorarioId(Integer horarioId) {
-        this.horarioId = horarioId;
+    public void setHorario(Horario horario) {
+        this.horario = horario;
     }
 
     @Override
@@ -91,7 +95,7 @@ public class HorarioSesion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sge.entity.HorarioSesion[ id=" + id + " ]";
+        return "testjpa.HorarioSesion[ id=" + id + " ]";
     }
     
 }
