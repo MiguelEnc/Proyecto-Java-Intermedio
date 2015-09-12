@@ -1,4 +1,4 @@
-package com.sge.tables;
+package com.sge.template.tables;
 
 import com.sge.entity.Estudiante;
 import java.util.List;

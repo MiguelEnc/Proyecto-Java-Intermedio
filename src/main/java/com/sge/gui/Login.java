@@ -5,6 +5,11 @@
  */
 package com.sge.gui;
 
+import com.sge.bs.DaoEnum;
+import com.sge.bs.DaoFactory;
+import com.sge.dao.UsuarioDao;
+import com.sge.entity.Usuario;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -131,18 +136,29 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        String user = jTextField1.getText();
+        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
+        List<Usuario> usuarios = usuarioDao.getAll();
         
-        if(user.equals("admin") && jPasswordField1.getText().equals("123")){
+        String user = jTextField1.getText();
+        String pass = jPasswordField1.getText();
+        
+        for(Usuario u : usuarios){
+            if(u.getNombreUsuario().equals(user) && u.getClave().equals(pass)){
+                //TODO:Implementar
+            }
+        }
+                
+        
+        
+        if(user.equals("admin") && pass.equals("123")){
             new AdminPage(user).setVisible(true);
             this.dispose();
         }
-        else if(user.equals("estu") && jPasswordField1.getText().equals("123")){
+        else if(user.equals("estu") && pass.equals("123")){
             new MenuEstudiante(user).setVisible(true);
             this.dispose();
         }
         else{
-            //JOption error message
             JOptionPane.showMessageDialog(this,
             "Usuario o contrasena incorrectos.",
             "Error de autenticacion",

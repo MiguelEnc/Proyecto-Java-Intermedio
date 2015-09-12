@@ -9,7 +9,7 @@ import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.HorarioDao;
 import com.sge.entity.Horario;
-import com.sge.tables.HorarioTableValue;
+import com.sge.template.tables.HorarioTableValue;
 import java.util.List;
 
 /**

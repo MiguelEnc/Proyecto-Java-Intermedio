@@ -9,7 +9,7 @@ import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.EstudianteDao;
 import com.sge.entity.Estudiante;
-import com.sge.tables.EstudianteTableValue;
+import com.sge.template.tables.EstudianteTableValue;
 import java.util.List;
 
 /**

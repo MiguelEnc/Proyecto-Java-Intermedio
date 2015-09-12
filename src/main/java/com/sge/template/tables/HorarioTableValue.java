@@ -1,17 +1,16 @@
-package com.sge.tables;
+package com.sge.template.tables;
 
-import com.sge.entity.Aula;
+import com.sge.entity.Horario;
 import java.util.List;
 
 /**
  *
  * @author miguel
  */
-public class AulaTableValue extends GenericTableValue<Aula>{
-    
-    
-    public AulaTableValue(List<Aula> aulas){
-        lista = aulas;
+public class HorarioTableValue extends GenericTableValue<Horario>{
+
+    public HorarioTableValue(List<Horario> horarios){
+        lista = horarios;
         columnNames = new String[]{"ID", "Descripcion", "Estatus"};
         clases = new Class[]{Integer.class, String.class, String.class};
     }
@@ -30,5 +29,5 @@ public class AulaTableValue extends GenericTableValue<Aula>{
                 return null;
         }
     }
-
+    
 }

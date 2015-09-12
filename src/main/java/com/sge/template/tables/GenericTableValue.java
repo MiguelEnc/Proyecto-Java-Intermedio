@@ -1,4 +1,4 @@
-package com.sge.tables;
+package com.sge.template.tables;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
