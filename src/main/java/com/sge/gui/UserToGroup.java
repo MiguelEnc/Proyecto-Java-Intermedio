@@ -8,9 +8,14 @@ package com.sge.gui;
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.GrupoDao;
+import com.sge.dao.GrupoUsuarioDao;
+import com.sge.dao.UsuarioDao;
 import com.sge.entity.Grupo;
+import com.sge.entity.GrupoUsuario;
+import com.sge.entity.Usuario;
 import com.sge.templates.comboxes.GrupoCBValue;
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -18,23 +23,86 @@ import java.util.List;
  */
 public class UserToGroup extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GupoFrame
-     */
     private UserToGroup() {
         initComponents();
+        fillList1();
     }
     private static UserToGroup instancia;
+    GrupoUsuarioDao grupoUsuarioDao = (GrupoUsuarioDao) DaoFactory.getDao(DaoEnum.GRUPOUSUARIO);
+    
+    int List1SelectedIndex;
+    int List2SelectedIndex;
+    
     public static UserToGroup getInstancia() {
         try {
             if(instancia==null)
             instancia=new UserToGroup();
-        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        } catch (Exception e) {
+            System.out.println("Singleton Error: " + e);
         }
         
         return instancia;
     }
     
+    private void fillList1(){
+        DefaultListModel listModel = new DefaultListModel();
+        
+        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
+        List<Usuario> items = usuarioDao.getAll();
+        
+        for(Usuario u : items){
+            listModel.addElement(u.getNombreUsuario());
+        }
+        
+        jList1.setModel(listModel);
+    }
+    
+    private void fillList1(int index){
+        DefaultListModel listModel = new DefaultListModel();
+        
+        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
+        List<Usuario> items = usuarioDao.getAll();
+        
+        for(Usuario u : items){
+            listModel.addElement(u.getNombreUsuario());
+        }
+        
+        listModel.addElement(jList1.getSelectedValue().toString());
+        
+        jList1.setModel(listModel);
+        
+        
+        linkUserToGroup(index);
+        
+    }
+    
+    private void linkUserToGroup(int userIndex){
+        
+        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
+        Usuario usuario = usuarioDao.findEntity(userIndex);
+        
+        GrupoDao grupoDao = (GrupoDao) DaoFactory.getDao(DaoEnum.GRUPOUSUARIO);
+        Grupo grupo = grupoDao.findEntity(jComboBox1.getSelectedIndex());
+        
+        GrupoUsuario grupoUsuario = new GrupoUsuario();
+        
+        grupoUsuario.setGrupo(grupo);
+        grupoUsuario.setUsuario(usuario);
+        
+        grupoUsuarioDao.save(grupoUsuario);
+    }
+    
+    private void fillList2(){
+        DefaultListModel listModel = new DefaultListModel();
+        
+        int grupoId = jComboBox1.getSelectedIndex();
+        
+        GrupoUsuario grupoUsuario = grupoUsuarioDao.getGrupoUsuarioByGrupoId(grupoId);
+        
+        listModel.addElement(grupoUsuario.getUsuario().getNombreUsuario());
+        
+        jList2.setModel(listModel);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,10 +119,10 @@ public class UserToGroup extends javax.swing.JInternalFrame {
         jList1 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
-        ButtonGuardar = new javax.swing.JButton();
-        ButtonCancelar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnPassTo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnPassBack = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
 
         setClosable(true);
@@ -72,6 +140,11 @@ public class UserToGroup extends javax.swing.JInternalFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jList2.setModel(new javax.swing.AbstractListModel() {
@@ -79,24 +152,44 @@ public class UserToGroup extends javax.swing.JInternalFrame {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
+        jList2.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList2ValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList2);
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jButton1.setText(">>");
-
-        ButtonGuardar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        ButtonGuardar.setText("Guardar");
-        ButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnPassTo.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnPassTo.setText(">>");
+        btnPassTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonGuardarActionPerformed(evt);
+                btnPassToActionPerformed(evt);
             }
         });
 
-        ButtonCancelar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        ButtonCancelar.setText("Cancelar");
+        btnGuardar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        jButton2.setText("<<");
+        btnCancelar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnPassBack.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnPassBack.setText("<<");
+        btnPassBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPassBackActionPerformed(evt);
+            }
+        });
 
         List<Grupo> list=GrupoDao.getAll();
         GrupoCBValue cv=new GrupoCBValue(list);
@@ -111,9 +204,9 @@ public class UserToGroup extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(ButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(ButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -123,8 +216,8 @@ public class UserToGroup extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnPassTo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnPassBack, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(15, 15, 15)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -147,29 +240,52 @@ public class UserToGroup extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPassTo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPassBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonGuardar)
-                    .addComponent(ButtonCancelar))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonGuardarActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        jList1.setSelectedIndex(1);
+        jList2.setSelectedIndex(1);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        List1SelectedIndex = jList1.getSelectedIndex();
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void jList2ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList2ValueChanged
+        List2SelectedIndex = jList2.getSelectedIndex();
+    }//GEN-LAST:event_jList2ValueChanged
+
+    private void btnPassToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassToActionPerformed
+        jList1.remove(jList1.getSelectedIndex());
+        fillList2();
+    }//GEN-LAST:event_btnPassToActionPerformed
+
+    private void btnPassBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassBackActionPerformed
+        jList2.remove(jList2.getSelectedIndex());
+        fillList1(List2SelectedIndex);
+    }//GEN-LAST:event_btnPassBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonCancelar;
-    private javax.swing.JButton ButtonGuardar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnPassBack;
+    private javax.swing.JButton btnPassTo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

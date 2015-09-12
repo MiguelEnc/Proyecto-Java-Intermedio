@@ -144,7 +144,10 @@ public class Login extends javax.swing.JFrame {
         
         for(Usuario u : usuarios){
             if(u.getNombreUsuario().equals(user) && u.getClave().equals(pass)){
-                //TODO:Implementar
+//                If user == admin
+//                launch adminpage
+//                If user == cajero
+//                launch menuestudiante
             }
         }
                 

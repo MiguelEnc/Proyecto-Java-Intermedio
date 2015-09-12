@@ -3,6 +3,7 @@ package com.sge.dao.impl;
 import com.sge.dao.GrupoUsuarioDao;
 import static com.sge.dao.ServiceDao.em;
 import com.sge.entity.GrupoUsuario;
+import com.sge.entity.Usuario;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -48,5 +49,14 @@ public class GrupoUsuarioDaoImpl implements GrupoUsuarioDao{
         Query query = em.createNamedQuery("GrupoUsuario.findAll");
         return query.getResultList();
     }
+
+    public GrupoUsuario getGrupoUsuarioByGrupoId(int grupoId) {
+        Query query = em.createNamedQuery("GrupoUsuario.findByGrupo");
+        query.setParameter("grupo", grupoId);
+        
+        return (GrupoUsuario) query.getSingleResult();
+    }
+
+    
     
 }

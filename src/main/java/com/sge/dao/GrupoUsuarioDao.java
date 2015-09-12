@@ -8,4 +8,5 @@ import com.sge.entity.GrupoUsuario;
  */
 public interface GrupoUsuarioDao extends GenericDao<GrupoUsuario,Integer>, ServiceDao{
     
+    public GrupoUsuario getGrupoUsuarioByGrupoId(int grupoId);
 }
