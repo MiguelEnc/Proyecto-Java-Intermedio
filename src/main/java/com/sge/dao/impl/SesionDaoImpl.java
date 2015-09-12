@@ -42,16 +42,35 @@ public class SesionDaoImpl implements SesionDao {
     public Sesion findEntity(Integer id) {
         return (Sesion) em.find(Sesion.class, id);
     }
+    
+    public Sesion findByCodigo(String codigo) {
+        try {
+            Query query = em.createNamedQuery("Sesion.findByCodigo");
+            query.setParameter("codigo", codigo);
+            return (Sesion) query.getSingleResult();
+        } catch (Exception e) {return null;
+        }
+        
+    }
 
     public List<Sesion> getAll() {
-        Query query = em.createNamedQuery("Sesion.findAll");
+        try {
+            Query query = em.createNamedQuery("Sesion.findAll");
         return query.getResultList();
+        } catch (Exception e) {return null;
+        }
+        
     }
 
     public Sesion findByMateriaId(Integer materiaId) {
-        Query query = em.createNamedQuery("Sesion.findByMateriaId");
+        try {
+            Query query = em.createNamedQuery("Sesion.findByMateriaId");
         query.setParameter("materiaId", materiaId);
         return (Sesion) query.getSingleResult();
+        } catch (Exception e) {return null;
+        }
     }
+    
+    
     
 }

@@ -7,9 +7,18 @@ package com.sge.gui;
 
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
+import com.sge.dao.AulaDao;
+import com.sge.dao.MateriaDao;
+import com.sge.dao.ProfesorDao;
 import com.sge.dao.SesionDao;
+import com.sge.entity.Aula;
+import com.sge.entity.Materia;
+import com.sge.entity.Profesor;
 import com.sge.entity.Sesion;
 import com.sge.template.tables.SesionTableValue;
+import com.sge.templates.comboxes.AulaCBValue;
+import com.sge.templates.comboxes.MateriaCBValue;
+import com.sge.templates.comboxes.ProfeCBValue;
 import java.util.List;
 
 /**
@@ -105,11 +114,17 @@ public class ListSesionGUI extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel7.setText("Codigo");
 
-        cboMateria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Materia> listMate=MateriaDao.getAll();
+        MateriaCBValue cvMate=new MateriaCBValue(listMate);
+        cboMateria.setModel(cvMate);
 
-        cboProfesor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Profesor> listProfe=ProfesorDao.getAll();
+        ProfeCBValue cvProfe=new ProfeCBValue(listProfe);
+        cboProfesor.setModel(cvProfe);
 
-        cboAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Aula> listAu=AulaDao.getAll();
+        AulaCBValue cvAu=new AulaCBValue(listAu);
+        cboAula.setModel(cvAu);
 
         btnBorrar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         btnBorrar.setText("Borrar");
@@ -240,4 +255,9 @@ public class ListSesionGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaInicio;
     // End of variables declaration//GEN-END:variables
+
+    private  ProfesorDao ProfesorDao=(ProfesorDao) DaoFactory.getDao(DaoEnum.PROFESOR);
+    private  MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
+    private  AulaDao AulaDao=(AulaDao) DaoFactory.getDao(DaoEnum.AULA);
+
 }

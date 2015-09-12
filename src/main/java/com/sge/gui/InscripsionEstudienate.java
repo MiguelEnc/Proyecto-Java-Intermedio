@@ -5,6 +5,20 @@
  */
 package com.sge.gui;
 
+import com.sge.bs.DaoEnum;
+import com.sge.bs.DaoFactory;
+import com.sge.dao.HorarioSesionDao;
+import com.sge.dao.MateriaDao;
+import com.sge.dao.SesionDao;
+import com.sge.entity.HorarioSesion;
+import com.sge.entity.Materia;
+import com.sge.entity.Sesion;
+import com.sge.templates.comboxes.MateriaCBValue;
+import com.sge.templates.comboxes.SesionCBValue;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dante
@@ -21,8 +35,12 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    public static InscripsionEstudienate getInstance() {
+    
+
+    public static InscripsionEstudienate getInstance(String matricula) {
         
+        
+        jLabelMatricula.setText(matricula);
         try {
             if(instancia==null) {                
                 instancia=new InscripsionEstudienate();
@@ -30,7 +48,6 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             System.out.println("Siglenton Error:: "+ e);
         }
-        
         return instancia;
     
     }
@@ -75,6 +92,9 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
             }
         });
 
+        List<Sesion> listSe=SesionDao.getAll(
+            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
+        );
         LabelProfesorName.setText("nameprofe");
 
         LabelAula.setText("aula");
@@ -92,7 +112,9 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Materias");
 
-        ComboMaterias.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Materia> listMate=MateriaDao.getAll();
+        MateriaCBValue cvMate=new MateriaCBValue(listMate);
+        ComboMaterias.setModel(cvMate);
 
         jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel4.setText("Profesor: ");
@@ -113,7 +135,11 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel5.setText("Aula:");
 
-        ComboSecciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        /*List<Sesion> listSe=SesionDao.getAll(
+            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
+        );*/
+        SesionCBValue cvSe=new SesionCBValue(listSe);
+        ComboSecciones.setModel(cvSe);
 
         LabelCodigo.setText("codigo");
 
@@ -209,10 +235,27 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         // TODO add your handling code here:
+        
+               
+        
+        
+        JOptionPane.showMessageDialog(null, ComboSecciones.getSelectedItem().toString());
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     private void ButtonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInscribirActionPerformed
         // TODO add your handling code here:
+        
+        SesionDao sdao=(SesionDao) DaoFactory.getDao(DaoEnum.SESION);
+        HorarioSesionDao  hsDao = (HorarioSesionDao) DaoFactory.getDao(DaoEnum.HORARIOSESION);
+        HorarioSesion hs = new HorarioSesion();
+       //hs.setSesion(
+        
+        
+        //hsDao.save(hs);
+        
+        JOptionPane.showMessageDialog(null, "La inscripcion ha sido guardada.");
+        
+        
     }//GEN-LAST:event_ButtonInscribirActionPerformed
 
 
@@ -234,6 +277,11 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelMatricula;
+    private static javax.swing.JLabel jLabelMatricula;
     // End of variables declaration//GEN-END:variables
+    
+    private  MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
+    private  SesionDao SesionDao=(SesionDao) DaoFactory.getDao(DaoEnum.SESION);
+
+
 }

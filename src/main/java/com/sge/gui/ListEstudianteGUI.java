@@ -61,6 +61,9 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
 
+        setClosable(true);
+        setMaximizable(true);
+
         List<Estudiante> estudiantes = estudianteDao.getAll();
         EstudianteTableValue tv = new EstudianteTableValue(estudiantes);
         jTable1.setModel(tv);

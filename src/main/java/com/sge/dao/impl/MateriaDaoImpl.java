@@ -51,7 +51,17 @@ public class MateriaDaoImpl implements MateriaDao{
         } catch (Exception e) {
             return null;
         }
-        
     }
+    
+    public Materia findName(Integer materiaId)
+    {
+        try {
+            Query query = em.createNamedQuery("Materia.findByNombre");
+            query.setParameter("materiaId", materiaId);
+            return (Materia) query.getSingleResult();
+        } catch (Exception e) {return null;
+        }
+    }
+    
     
 }

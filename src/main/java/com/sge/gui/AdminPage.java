@@ -6,10 +6,7 @@
 package com.sge.gui;
 
 import java.awt.Component;
-import java.awt.GridLayout;
 import javax.swing.Box;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +18,7 @@ public class AdminPage extends javax.swing.JFrame {
     
     /**
      * Creates new form AdminPage
+     * @param userName
      */
     public AdminPage(String userName) {
         this.userName = userName;
