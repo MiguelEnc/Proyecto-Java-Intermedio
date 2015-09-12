@@ -23,7 +23,7 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
            
     private ListEstudianteGUI() {
         initComponents();
-        //this.me=me;
+        
     }
     
     public static ListEstudianteGUI getInstance() {
@@ -34,7 +34,7 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
             }
         } catch (Exception e) {
             System.out.println("Siglenton Error:: "+ e);
-        }
+        } 
         
         return instancia;
     
@@ -178,4 +178,5 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableMateriasSelect;
     private javax.swing.JTextField jTextMatriculaSearch;
     // End of variables declaration//GEN-END:variables
+
 }

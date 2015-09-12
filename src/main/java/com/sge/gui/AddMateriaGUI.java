@@ -26,8 +26,12 @@ public class AddMateriaGUI extends javax.swing.JInternalFrame {
     private static AddMateriaGUI instancia;
     public static AddMateriaGUI getInstancia()
     {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new AddMateriaGUI();
+        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
 

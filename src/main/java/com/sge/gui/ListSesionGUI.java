@@ -25,13 +25,13 @@ public class ListSesionGUI extends javax.swing.JInternalFrame {
     public static ListSesionGUI getInstance() {
         
         try {
-            if(instancia==null) {                
+            if(instancia==null)                
                 instancia=new ListSesionGUI();
-            }
         } catch (Exception e) {
             System.out.println("Siglenton Error:: "+ e);
         }
         
+            
         return instancia;
     
     }

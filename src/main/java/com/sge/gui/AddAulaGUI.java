@@ -27,8 +27,12 @@ public class AddAulaGUI extends javax.swing.JInternalFrame {
     
     public static AddAulaGUI getInstancia()
     {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new AddAulaGUI();
+        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
 

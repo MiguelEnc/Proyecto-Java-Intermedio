@@ -27,8 +27,12 @@ public class AddGrupo extends javax.swing.JInternalFrame {
     
     public static AddGrupo getInstancia()
     {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new AddGrupo();
+        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
 
