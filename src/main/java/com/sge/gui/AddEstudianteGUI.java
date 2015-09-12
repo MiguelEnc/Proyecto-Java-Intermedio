@@ -177,10 +177,14 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    private void Limpiar(){
         txtApellido.setText("");
         txtNombre.setText("");
         txtCorreo.setText("");
+    }
+    
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -196,6 +200,7 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(null, "El estudiante ha sido guardado.");
         
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

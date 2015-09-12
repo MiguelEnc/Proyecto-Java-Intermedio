@@ -139,13 +139,16 @@ public class AddMateriaGUI extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(null, "La Materia ha sido guardada.");
         
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtNombre.setText("");
+        Limpiar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-
+    private void Limpiar(){
+        txtNombre.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;

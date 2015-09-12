@@ -11,6 +11,7 @@ import com.sge.dao.MateriaDao;
 import com.sge.entity.Materia;
 import com.sge.template.tables.MateriaTableValue;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +19,10 @@ import java.util.List;
  */
 public class ListMateriaGUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListMateriaGUI
-     */
     private static  ListMateriaGUI instancia;
+    
+    private int id;
+    
     private ListMateriaGUI() {
         initComponents();
     }
@@ -45,9 +46,9 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -56,18 +57,35 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
         List<Materia> materias = materiaDao.getAll();
         MateriaTableValue tv = new MateriaTableValue(materias);
         jTable1.setModel(tv);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Nombre");
 
-        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        jButton1.setText("Actualizar");
+        btnActualizar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        jButton2.setText("Borrar");
+        btnBorrar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.setEnabled(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,10 +97,10 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,11 +111,11 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btnActualizar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(btnBorrar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -121,14 +139,50 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRowIndex = jTable1.getSelectedRow();
+        int selectedColumnIndex = jTable1.getSelectedColumn();
+        Object selectedID = (Object) jTable1.getModel().getValueAt(selectedRowIndex, selectedColumnIndex);
+        
+        id = Integer.parseInt(selectedID.toString());
+        getInfoFromID(id);
+        
+        btnActualizar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        Materia materia = materiaDao.findEntity(id);
+        materia.setNombre(txtNombre.getText());
+        
+        materiaDao.update(materia);
+        
+        JOptionPane.showMessageDialog(null, "La materia ha sido actualizada.");
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        Materia materia = materiaDao.findEntity(id);
+        materia.setStatus("B");
+        
+        materiaDao.update(materia);
+        
+        JOptionPane.showMessageDialog(null, "La materia ha sido borrada.");
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void getInfoFromID(Integer id){
+        Materia materia = materiaDao.findEntity(id);
+        
+        txtNombre.setText(materia.getNombre());
+    }
+    
     MateriaDao materiaDao = (MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

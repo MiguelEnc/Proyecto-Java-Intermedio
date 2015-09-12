@@ -176,15 +176,19 @@ public class AddProfesorGUI extends javax.swing.JInternalFrame {
         profesorDao.save(profesor);
         
         JOptionPane.showMessageDialog(null, "El profesor ha sido guardado.");
+        
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void Limpiar(){
         txtNombre.setText("");
         txtApellido.setText("");
         txtCorreo.setText("");
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
