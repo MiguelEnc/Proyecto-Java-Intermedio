@@ -185,10 +185,6 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-        
-        
-        
-        
         Estudiante estudiante = new Estudiante();
         estudiante.setApellido(txtApellido.getText());
         estudiante.setCorreo(txtCorreo.getText());

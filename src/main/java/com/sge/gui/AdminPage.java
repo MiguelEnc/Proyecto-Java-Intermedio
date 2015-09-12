@@ -346,7 +346,7 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         AddSesionGUI addSecGui =  AddSesionGUI.getInstancia();
-        if(!addSecGui.isVisible())
+        //if(!addSecGui.isVisible())
             jDesktopPane1.add(addSecGui);
         addSecGui.show();
     }//GEN-LAST:event_jMenuItem10ActionPerformed

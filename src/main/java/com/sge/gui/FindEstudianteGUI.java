@@ -172,6 +172,7 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         InscripsionEstudienate inscribir= InscripsionEstudienate.getInstance();
         if(inscribir.isVisible())
         {
+        } else {
             JDesktopPane desktopPane = getDesktopPane();
             desktopPane.add(inscribir);
         }

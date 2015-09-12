@@ -54,6 +54,11 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
         List<Horario> horarios = horarioDao.getAll();
         HorarioTableValue tv = new HorarioTableValue(horarios);
         jTable1.setModel(tv);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -101,6 +106,11 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+            
+    }//GEN-LAST:event_jTable1MouseClicked
 
     HorarioDao horarioDao = (HorarioDao) DaoFactory.getDao(DaoEnum.HORARIO);
     // Variables declaration - do not modify//GEN-BEGIN:variables
