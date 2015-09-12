@@ -1,32 +1,34 @@
-package com.sge.tables;
+package com.sge.template.tables;
 
-import com.sge.entity.Materia;
+import com.sge.entity.Aula;
 import java.util.List;
 
 /**
  *
  * @author miguel
  */
-public class MateriaTableValue extends GenericTableValue<Materia>{
-
-    public MateriaTableValue(List<Materia> materias){
-        lista = materias;
-        columnNames = new String[]{"ID", "Nombre", "Estatus"};
+public class AulaTableValue extends GenericTableValue<Aula>{
+    
+    
+    public AulaTableValue(List<Aula> aulas){
+        lista = aulas;
+        columnNames = new String[]{"ID", "Descripcion", "Estatus"};
         clases = new Class[]{Integer.class, String.class, String.class};
     }
     
     @Override
     public Object getValueAt(int row, int col) {
+        
         switch(col){
             case 0:
                 return lista.get(row).getId();
             case 1:
-                return lista.get(row).getNombre();
+                return lista.get(row).getDescripcion();
             case 2:
                 return lista.get(row).getStatus();
             default:
                 return null;
         }
     }
-    
+
 }

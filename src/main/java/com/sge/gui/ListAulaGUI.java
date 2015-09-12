@@ -9,7 +9,7 @@ import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.AulaDao;
 import com.sge.entity.Aula;
-import com.sge.tables.AulaTableValue;
+import com.sge.template.tables.AulaTableValue;
 import java.util.List;
 
 /**

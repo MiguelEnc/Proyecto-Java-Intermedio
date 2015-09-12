@@ -17,13 +17,19 @@ import javax.swing.JOptionPane;
  */
 public class AddEstudianteGUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AddEstudianteGUI
-     */
+    EstudianteDao estudianteDao = (EstudianteDao) DaoFactory.getDao(DaoEnum.ESTUDIANTE);
     
     private  static  AddEstudianteGUI instancia;
+    
+    private void generateMatricula(){
+        int numeroEstudiantes = estudianteDao.getAll().size();
+        String matricula = "2015-0".concat(String.valueOf(numeroEstudiantes + 1));
+        lblMatricula.setText(matricula);
+    }
+    
     private AddEstudianteGUI() {
         initComponents();
+        generateMatricula();
     }
     
     public static AddEstudianteGUI getInstancia()
@@ -179,7 +185,9 @@ public class AddEstudianteGUI extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-        EstudianteDao estudianteDao = (EstudianteDao) DaoFactory.getDao(DaoEnum.ESTUDIANTE);
+        
+        
+        
         
         Estudiante estudiante = new Estudiante();
         estudiante.setApellido(txtApellido.getText());

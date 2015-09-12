@@ -9,7 +9,7 @@ import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.SesionDao;
 import com.sge.entity.Sesion;
-import com.sge.tables.SesionTableValue;
+import com.sge.template.tables.SesionTableValue;
 import java.util.List;
 
 /**

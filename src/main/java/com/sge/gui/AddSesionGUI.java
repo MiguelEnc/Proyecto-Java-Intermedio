@@ -25,12 +25,19 @@ import javax.swing.JOptionPane;
  */
 public class AddSesionGUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form AddSesionGUI
-     */
-   private  static  AddSesionGUI instancia;
+    SesionDao sesionDao = (SesionDao) DaoFactory.getDao(DaoEnum.SESION);
+    
+    private void generateCodigo(){
+        String letras = cboMateria.getSelectedItem().toString().substring(0, 2);
+        int numeros = sesionDao.getAll().size() + 1;
+        
+        lblCodigo.setText(letras + String.valueOf(numeros));
+    }
+    
+    private  static  AddSesionGUI instancia;
     private AddSesionGUI() {
         initComponents();
+        generateCodigo();
     }
     
     public static AddSesionGUI getInstancia()
@@ -235,8 +242,6 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
-        SesionDao sesionDao = (SesionDao) DaoFactory.getDao(DaoEnum.SESION);
         
         MateriaDao materiaDao= (MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
         Materia materia = materiaDao.findEntity(cboMateria.getSelectedIndex());
