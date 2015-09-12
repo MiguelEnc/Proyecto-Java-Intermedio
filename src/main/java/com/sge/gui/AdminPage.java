@@ -5,8 +5,10 @@
  */
 package com.sge.gui;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import javax.swing.Box;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -318,7 +320,10 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-  
+        
+               
+        for (Component compo: jDesktopPane1.getComponents())
+            compo.setVisible(false);
         
         new Login().setVisible(true);
         this.dispose();
