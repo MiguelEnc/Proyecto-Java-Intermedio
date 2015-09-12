@@ -5,6 +5,13 @@
  */
 package com.sge.gui;
 
+import com.sge.bs.DaoEnum;
+import com.sge.bs.DaoFactory;
+import com.sge.dao.GrupoDao;
+import com.sge.entity.Grupo;
+import com.sge.templates.comboxes.GrupoCBValue;
+import java.util.List;
+
 /**
  *
  * @author dante
@@ -91,7 +98,9 @@ public class UserToGroup extends javax.swing.JInternalFrame {
         jButton2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jButton2.setText("<<");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Grupo> list=GrupoDao.getAll();
+        GrupoCBValue cv=new GrupoCBValue(list);
+        jComboBox1.setModel(cv);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,4 +178,5 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+    private  GrupoDao GrupoDao=(GrupoDao) DaoFactory.getDao(DaoEnum.GRUPO);
 }

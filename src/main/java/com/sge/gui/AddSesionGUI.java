@@ -8,15 +8,22 @@ package com.sge.gui;
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.AulaDao;
+import com.sge.dao.HorarioDao;
 import com.sge.dao.MateriaDao;
 import com.sge.dao.ProfesorDao;
 import com.sge.dao.SesionDao;
 import com.sge.entity.Aula;
+import com.sge.entity.Horario;
 import com.sge.entity.Materia;
 import com.sge.entity.Profesor;
 import com.sge.entity.Sesion;
+import com.sge.templates.comboxes.AulaCBValue;
+import com.sge.templates.comboxes.HorarioCBValue;
+import com.sge.templates.comboxes.MateriaCBValue;
+import com.sge.templates.comboxes.ProfeCBValue;
 import com.sge.util.ManageUtil;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -102,21 +109,29 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
         txtFechaInicio.setToolTipText("dd-mm-aaaa");
 
         cboMateria.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        cboMateria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-" }));
+        List<Materia> listMate=MateriaDao.getAll();
+        MateriaCBValue cvMate=new MateriaCBValue(listMate);
+        cboMateria.setModel(cvMate);
 
         cboProfesor.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        cboProfesor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-" }));
+        List<Profesor> listProfe=ProfesorDao.getAll();
+        ProfeCBValue cvProfe=new ProfeCBValue(listProfe);
+        cboProfesor.setModel(cvProfe);
 
         txtFechaFin.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         txtFechaFin.setToolTipText("dd-mm-aaaa");
 
         cboAula.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        cboAula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-" }));
+        List<Aula> listAu=AulaDao.getAll();
+        AulaCBValue cvAu=new AulaCBValue(listAu);
+        cboAula.setModel(cvAu);
 
         txtCapacidad.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
         cboHorario.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        cboHorario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-" }));
+        List<Horario> listHo=HorarioDao.getAll();
+        HorarioCBValue cvHo=new HorarioCBValue(listHo);
+        cboHorario.setModel(cvHo);
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel3.setText("Fecha Inicio");
@@ -297,4 +312,11 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaInicio;
     // End of variables declaration//GEN-END:variables
+    
+    private  ProfesorDao ProfesorDao=(ProfesorDao) DaoFactory.getDao(DaoEnum.PROFESOR);
+    private  MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
+    private  AulaDao AulaDao=(AulaDao) DaoFactory.getDao(DaoEnum.AULA);
+    private  HorarioDao HorarioDao=(HorarioDao) DaoFactory.getDao(DaoEnum.HORARIO);
+    
+
 }

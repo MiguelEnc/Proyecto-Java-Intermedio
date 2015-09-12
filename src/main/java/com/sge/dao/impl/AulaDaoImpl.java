@@ -45,8 +45,12 @@ public class AulaDaoImpl implements AulaDao{
     }
 
     public List<Aula> getAll() {
-        Query query = em.createNamedQuery("Aula.findAll");
+        try {
+            Query query = em.createNamedQuery("Aula.findAll");
         return query.getResultList();
+        } catch (Exception e) {return  null;
+        }
+        
     }
     
 }

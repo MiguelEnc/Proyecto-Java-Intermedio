@@ -319,6 +319,7 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
   
+        
         new Login().setVisible(true);
         this.dispose();
         

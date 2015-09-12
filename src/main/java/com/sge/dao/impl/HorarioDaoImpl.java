@@ -45,8 +45,12 @@ public class HorarioDaoImpl implements HorarioDao{
     }
 
     public List<Horario> getAll() {
-        Query query = em.createNamedQuery("Horario.findAll");
+        try {
+            Query query = em.createNamedQuery("Horario.findAll");
         return query.getResultList();
+        } catch (Exception e) {return null;
+        }
+        
     }
     
 }
