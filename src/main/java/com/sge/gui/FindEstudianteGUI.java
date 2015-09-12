@@ -13,24 +13,23 @@ import javax.swing.JDesktopPane;
  *
  * @author miguel
  */
-public class ListEstudianteGUI extends javax.swing.JInternalFrame {
+public class FindEstudianteGUI extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ListEstudianteGUI
+     * Creates new form FindEstudianteGUI
      */
     
-    private static ListEstudianteGUI instancia;
+    private static FindEstudianteGUI instancia;
            
-    private ListEstudianteGUI() {
+    private FindEstudianteGUI() {
         initComponents();
-        //this.me=me;
     }
     
-    public static ListEstudianteGUI getInstance() {
+    public static FindEstudianteGUI getInstance() {
         
         try {
             if(instancia==null) {                
-                instancia=new ListEstudianteGUI();
+                instancia=new FindEstudianteGUI();
             }
         } catch (Exception e) {
             System.out.println("Siglenton Error:: "+ e);
@@ -97,6 +96,7 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
         jButtonBuscar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButtonBuscar.setText("Buscar");
 
+        jButtonInscribir.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButtonInscribir.setText("Inscribir");
         jButtonInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,27 +124,23 @@ public class ListEstudianteGUI extends javax.swing.JInternalFrame {
                                 .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonBuscar)))
-                        .addGap(39, 39, 39)
-                        .addComponent(jButtonInscribir)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jButtonBuscar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jButtonInscribir)))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButtonInscribir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jButtonBuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

@@ -5,6 +5,13 @@
  */
 package com.sge.gui;
 
+import com.sge.bs.DaoEnum;
+import com.sge.bs.DaoFactory;
+import com.sge.dao.MateriaDao;
+import com.sge.entity.Materia;
+import com.sge.tables.MateriaTableValue;
+import java.util.List;
+
 /**
  *
  * @author miguel
@@ -46,25 +53,9 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Mostrar Materias");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Nombre", "Estado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        List<Materia> materias = materiaDao.getAll();
+        MateriaTableValue tv = new MateriaTableValue(materias);
+        jTable1.setModel(tv);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -130,7 +121,7 @@ public class ListMateriaGUI extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+    MateriaDao materiaDao = (MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

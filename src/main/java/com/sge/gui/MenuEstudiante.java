@@ -134,7 +134,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
     private void jMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarActionPerformed
         // TODO add your handling code here:
         
-       ListEstudianteGUI legui=ListEstudianteGUI.getInstance();
+       FindEstudianteGUI legui=FindEstudianteGUI.getInstance();
         if(!legui.isVisible())
             Pane1Desktop.add(legui);
         legui.setVisible(true);
