@@ -8,8 +8,11 @@ package com.sge.gui;
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.EstudianteDao;
+import com.sge.dao.MateriaDao;
 import com.sge.entity.Estudiante;
+import com.sge.entity.Materia;
 import com.sge.templates.comboxes.EstuCBValue;
+import com.sge.templates.comboxes.MateriaCBValue;
 import java.util.List;
 import javax.swing.JDesktopPane;
 
@@ -30,6 +33,8 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
     private FindEstudianteGUI() {
         initComponents();
     }
+    
+    private String matricula;
     
     public static FindEstudianteGUI getInstance() {
         
@@ -58,11 +63,12 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMateriasSelect = new javax.swing.JTable();
         jTextMatriculaSearch = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jComboBoxMatriculas = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
         jButtonBuscar = new javax.swing.JButton();
         jButtonInscribir = new javax.swing.JButton();
+        jRadioselect = new javax.swing.JRadioButton();
+        jRadiobuscar = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -90,21 +96,20 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTableMateriasSelect);
 
         jTextMatriculaSearch.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        jTextMatriculaSearch.setEnabled(false);
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel3.setText("Buscar");
-
-        jComboBoxMatriculas.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        jComboBoxMatriculas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         List<Estudiante> list=EstudianteDao.getAll();
         EstuCBValue cv=new EstuCBValue(list);
         jComboBoxMatriculas.setModel(cv);
-
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel1.setText("Seleccionar");
+        jComboBoxMatriculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMatriculasActionPerformed(evt);
+            }
+        });
 
         jButtonBuscar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.setEnabled(false);
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
@@ -119,31 +124,55 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
             }
         });
 
+        jRadioselect.setText("Seleccionar");
+        jRadioselect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioselectActionPerformed(evt);
+            }
+        });
+
+        jRadiobuscar.setText("Buscar");
+        jRadiobuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadiobuscarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jComboBoxMatriculas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonBuscar)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(0, 11, Short.MAX_VALUE))
+                        .addComponent(jRadioselect)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBoxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadiobuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,16 +180,18 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxMatriculas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButtonInscribir))
+                    .addComponent(jButtonInscribir)
+                    .addComponent(jRadioselect))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextMatriculaSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButtonBuscar))
+                    .addComponent(jButtonBuscar)
+                    .addComponent(jRadiobuscar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -168,7 +199,7 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
 
     private void jButtonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscribirActionPerformed
         // TODO add your handling code here:
-        InscripsionEstudienate inscribir= InscripsionEstudienate.getInstance();
+        InscripsionEstudienate inscribir= InscripsionEstudienate.getInstance(matricula);
         if(!inscribir.isVisible())
         {
         } else {
@@ -185,19 +216,47 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         
         int id= Integer.parseInt(jTextMatriculaSearch.getText());
         Estudiante list=EstudianteDao.findEntity(id);
-        System.out.println(list.getNombre());
+        //System.out.println(list.getNombre());
         
+        matricula=jTextMatriculaSearch.getText();
         
         
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
+    private void jRadioselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioselectActionPerformed
+        jRadiobuscar.setSelected(false);
+        jComboBoxMatriculas.setEnabled(true);
+        jTextMatriculaSearch.setEnabled(false);
+        jButtonBuscar.setEnabled(false);
+        
+    }//GEN-LAST:event_jRadioselectActionPerformed
+
+    private void jRadiobuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadiobuscarActionPerformed
+        jRadioselect.setSelected(false);
+        jComboBoxMatriculas.setEnabled(false);
+        jTextMatriculaSearch.setEnabled(true);
+        jButtonBuscar.setEnabled(true);
+    }//GEN-LAST:event_jRadiobuscarActionPerformed
+
+    private void jComboBoxMatriculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMatriculasActionPerformed
+        
+         matricula=jTextMatriculaSearch.getText();
+        
+    }//GEN-LAST:event_jComboBoxMatriculasActionPerformed
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonInscribir;
     private javax.swing.JComboBox jComboBoxMatriculas;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton jRadiobuscar;
+    private javax.swing.JRadioButton jRadioselect;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableMateriasSelect;
     private javax.swing.JTextField jTextMatriculaSearch;

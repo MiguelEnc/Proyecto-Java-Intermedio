@@ -16,6 +16,7 @@ import com.sge.entity.Sesion;
 import com.sge.templates.comboxes.MateriaCBValue;
 import com.sge.templates.comboxes.SesionCBValue;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,8 +35,12 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    public static InscripsionEstudienate getInstance() {
+    
+
+    public static InscripsionEstudienate getInstance(String matricula) {
         
+        
+        jLabelMatricula.setText(matricula);
         try {
             if(instancia==null) {                
                 instancia=new InscripsionEstudienate();
@@ -87,6 +92,9 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
             }
         });
 
+        List<Sesion> listSe=SesionDao.getAll(
+            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
+        );
         LabelProfesorName.setText("nameprofe");
 
         LabelAula.setText("aula");
@@ -127,7 +135,9 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel5.setText("Aula:");
 
-        List<Sesion> listSe=SesionDao.getAll();
+        /*List<Sesion> listSe=SesionDao.getAll(
+            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
+        );*/
         SesionCBValue cvSe=new SesionCBValue(listSe);
         ComboSecciones.setModel(cvSe);
 
@@ -226,6 +236,8 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         // TODO add your handling code here:
         
+               
+        
         
         JOptionPane.showMessageDialog(null, ComboSecciones.getSelectedItem().toString());
     }//GEN-LAST:event_ButtonCancelarActionPerformed
@@ -265,7 +277,7 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelMatricula;
+    private static javax.swing.JLabel jLabelMatricula;
     // End of variables declaration//GEN-END:variables
     
     private  MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);

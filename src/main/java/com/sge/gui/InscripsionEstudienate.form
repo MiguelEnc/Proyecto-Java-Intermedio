@@ -139,6 +139,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="nameprofe"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Sesion&gt; listSe=SesionDao.getAll(&#xa;//MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()&#xa;);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelAula">
       <Properties>
@@ -236,7 +239,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Sesion&gt; listSe=SesionDao.getAll();&#xa;SesionCBValue cvSe=new SesionCBValue(listSe);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/*List&lt;Sesion&gt; listSe=SesionDao.getAll(&#xa;//MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()&#xa;);*/&#xa;SesionCBValue cvSe=new SesionCBValue(listSe);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCodigo">
@@ -253,6 +256,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="00-0000"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
