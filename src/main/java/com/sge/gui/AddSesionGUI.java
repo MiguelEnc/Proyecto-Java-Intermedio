@@ -44,7 +44,6 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     private  static  AddSesionGUI instancia;
     private AddSesionGUI() {
         initComponents();
-        generateCodigo();
     }
     
     public static AddSesionGUI getInstancia()
@@ -119,6 +118,11 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
         List<Materia> listMate=MateriaDao.getAll();
         MateriaCBValue cvMate=new MateriaCBValue(listMate);
         cboMateria.setModel(cvMate);
+        cboMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMateriaActionPerformed(evt);
+            }
+        });
 
         cboProfesor.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         List<Profesor> listProfe=ProfesorDao.getAll();
@@ -283,9 +287,19 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
         sesionDao.save(sesion);
         
         JOptionPane.showMessageDialog(null, "La sesion ha sido guardada.");
+        
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void cboMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMateriaActionPerformed
+        generateCodigo();
+    }//GEN-LAST:event_cboMateriaActionPerformed
+
+    private void Limpiar(){
         txtCapacidad.setText("");
         txtFechaFin.setText("");
         txtFechaInicio.setText("");
@@ -293,9 +307,7 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
         cboHorario.setSelectedIndex(0);
         cboMateria.setSelectedIndex(0);
         cboProfesor.setSelectedIndex(0);
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;

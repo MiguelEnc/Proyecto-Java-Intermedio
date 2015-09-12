@@ -72,6 +72,11 @@ public class AddHorarioGUI extends javax.swing.JInternalFrame {
 
         btnCancelar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,9 +140,17 @@ public class AddHorarioGUI extends javax.swing.JInternalFrame {
         horarioDao.save(horario);
         
         JOptionPane.showMessageDialog(null, "El horario ha sido guardado.");
+        
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void Limpiar(){
+        txtDescripcion.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;

@@ -135,12 +135,16 @@ public class AddGrupo extends javax.swing.JInternalFrame {
         
         JOptionPane.showMessageDialog(null, "El grupo ha sido guardado.");
         
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        txtDescripcion.setText("");
+        Limpiar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void Limpiar(){
+        txtDescripcion.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

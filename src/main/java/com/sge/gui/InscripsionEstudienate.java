@@ -15,7 +15,7 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
      * Creates new form InscripsionEstudienate
      */
     
-    private static InscripsionEstudienate instancia;
+    private static InscripsionEstudienate instancia = null;
            
     private InscripsionEstudienate() {
         initComponents();

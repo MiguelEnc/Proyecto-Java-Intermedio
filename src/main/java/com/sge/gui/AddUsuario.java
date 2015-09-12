@@ -147,10 +147,14 @@ public class AddUsuario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+    
+    private void Limpiar(){
         txtNombre.setText("");
         txtClave.setText("");
+    }
+    
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -165,6 +169,8 @@ public class AddUsuario extends javax.swing.JInternalFrame {
         usuarioDao.save(usuario);
         
         JOptionPane.showMessageDialog(null, "El usuario ha sido guardado.");
+        
+        Limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

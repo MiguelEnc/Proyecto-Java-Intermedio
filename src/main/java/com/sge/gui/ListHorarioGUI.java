@@ -11,6 +11,7 @@ import com.sge.dao.HorarioDao;
 import com.sge.entity.Horario;
 import com.sge.template.tables.HorarioTableValue;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,13 +19,13 @@ import java.util.List;
  */
 public class ListHorarioGUI extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ListHorarioGUI
-     */
     private ListHorarioGUI() {
         initComponents();
     }
     private static ListHorarioGUI instancia;
+    
+    private int id;
+    
     public static ListHorarioGUI getInstancia() {
         if(instancia==null)
             instancia=new ListHorarioGUI();
@@ -44,8 +45,8 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnBorrar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -54,6 +55,11 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
         List<Horario> horarios = horarioDao.getAll();
         HorarioTableValue tv = new HorarioTableValue(horarios);
         jTable1.setModel(tv);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -61,11 +67,23 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
 
         txtDescripcion.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        jButton1.setText("Actualizar");
+        btnActualizar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
-        jButton2.setText("Borrar");
+        btnBorrar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.setEnabled(false);
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,9 +98,9 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -94,18 +112,54 @@ public class ListHorarioGUI extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnActualizar)
+                    .addComponent(btnBorrar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRowIndex = jTable1.getSelectedRow();
+        int selectedColumnIndex = jTable1.getSelectedColumn();
+        Object selectedID = (Object) jTable1.getModel().getValueAt(selectedRowIndex, selectedColumnIndex);
+        
+        id = Integer.parseInt(selectedID.toString());
+        getInfoFromID(id);
+        
+        btnActualizar.setEnabled(true);
+        btnBorrar.setEnabled(true);
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void getInfoFromID(Integer id){
+        Horario horario = horarioDao.findEntity(id);
+        
+        txtDescripcion.setText(horario.getDescripcion());
+    }
+    
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        Horario horario = horarioDao.findEntity(id);
+        horario.setDescripcion(txtDescripcion.getText());
+        
+        horarioDao.update(horario);
+        
+        JOptionPane.showMessageDialog(null, "El horario ha sido actualizado.");
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        Horario horario = horarioDao.findEntity(id);
+        horario.setStatus("B");
+        
+        horarioDao.update(horario);
+        
+        JOptionPane.showMessageDialog(null, "El aula ha sido borrada.");
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
     HorarioDao horarioDao = (HorarioDao) DaoFactory.getDao(DaoEnum.HORARIO);
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

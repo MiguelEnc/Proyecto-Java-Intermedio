@@ -168,9 +168,8 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
 
     private void jButtonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInscribirActionPerformed
         // TODO add your handling code here:
-        
         InscripsionEstudienate inscribir= InscripsionEstudienate.getInstance();
-        if(inscribir.isVisible())
+        if(!inscribir.isVisible())
         {
             JDesktopPane desktopPane = getDesktopPane();
             desktopPane.add(inscribir);
