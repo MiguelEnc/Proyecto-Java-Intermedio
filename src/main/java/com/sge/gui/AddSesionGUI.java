@@ -35,8 +35,12 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     
     public static AddSesionGUI getInstancia()
     {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new AddSesionGUI();
+        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
 

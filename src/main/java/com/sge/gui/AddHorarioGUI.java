@@ -25,8 +25,13 @@ public class AddHorarioGUI extends javax.swing.JInternalFrame {
     }
     private  static AddHorarioGUI instancia;
     public static AddHorarioGUI getInstancia() {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new AddHorarioGUI();
+        } catch (Exception e) {
+            System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
     

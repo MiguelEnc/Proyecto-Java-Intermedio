@@ -19,8 +19,12 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     }
     private static UserToGroup instancia;
     public static UserToGroup getInstancia() {
-        if(instancia==null)
+        try {
+            if(instancia==null)
             instancia=new UserToGroup();
+        } catch (Exception e) {System.out.println("Singleton Error: " + e);
+        }
+        
         return instancia;
     }
     
