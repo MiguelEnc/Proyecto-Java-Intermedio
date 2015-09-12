@@ -45,8 +45,12 @@ public class GrupoDaoImpl implements GrupoDao{
     }
 
     public List<Grupo> getAll() {
-        Query query = em.createNamedQuery("Grupo.findAll");
+        try {
+            Query query = em.createNamedQuery("Grupo.findAll");
         return query.getResultList();
+        } catch (Exception e) {return null;
+        }
+        
     }
     
 }

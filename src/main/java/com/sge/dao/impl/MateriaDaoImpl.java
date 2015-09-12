@@ -45,8 +45,13 @@ public class MateriaDaoImpl implements MateriaDao{
     }
 
     public List<Materia> getAll() {
-        Query query = em.createNamedQuery("Materia.findAll");
-        return query.getResultList();
+        try {
+            Query query = em.createNamedQuery("Materia.findAll");
+            return query.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+        
     }
     
 }

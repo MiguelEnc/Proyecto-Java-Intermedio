@@ -203,25 +203,21 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cboMateria">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="List&lt;Materia&gt; listMate=MateriaDao.getAll();&#xa;MateriaCBValue cvMate=new MateriaCBValue(listMate);">
               <Font name="Ubuntu" size="11" style="0"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="-"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="cvMate" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cboProfesor">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="List&lt;Profesor&gt; listProfe=ProfesorDao.getAll();&#xa;ProfeCBValue cvProfe=new ProfeCBValue(listProfe);">
               <Font name="Ubuntu" size="11" style="0"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="-"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="cvProfe" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -235,13 +231,11 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cboAula">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="List&lt;Aula&gt; listAu=AulaDao.getAll();&#xa;AulaCBValue cvAu=new AulaCBValue(listAu);">
               <Font name="Ubuntu" size="11" style="0"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="-"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="cvAu" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -254,13 +248,11 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="cboHorario">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor" postCode="List&lt;Horario&gt; listHo=HorarioDao.getAll();&#xa;HorarioCBValue cvHo=new HorarioCBValue(listHo);">
               <Font name="Ubuntu" size="11" style="0"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="-"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="cvHo" type="code"/>
             </Property>
           </Properties>
         </Component>

@@ -45,8 +45,12 @@ public class ProfesorDaoImpl implements ProfesorDao {
     }
 
     public List<Profesor> getAll() {
-        Query query = em.createNamedQuery("Profesor.findAll");
+        try {
+            Query query = em.createNamedQuery("Profesor.findAll");
         return query.getResultList();
+        } catch (Exception e) {return  null;
+        }
+        
     }
     
 }

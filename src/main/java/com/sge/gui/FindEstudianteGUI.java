@@ -5,6 +5,12 @@
  */
 package com.sge.gui;
 
+import com.sge.bs.DaoEnum;
+import com.sge.bs.DaoFactory;
+import com.sge.dao.EstudianteDao;
+import com.sge.entity.Estudiante;
+import com.sge.templates.comboxes.EstuCBValue;
+import java.util.List;
 import javax.swing.JDesktopPane;
 
 
@@ -90,6 +96,9 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
 
         jComboBoxMatriculas.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jComboBoxMatriculas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        List<Estudiante> list=EstudianteDao.getAll();
+        EstuCBValue cv=new EstuCBValue(list);
+        jComboBoxMatriculas.setModel(cv);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Seleccionar");
@@ -177,4 +186,5 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableMateriasSelect;
     private javax.swing.JTextField jTextMatriculaSearch;
     // End of variables declaration//GEN-END:variables
+    private  EstudianteDao EstudianteDao=(EstudianteDao) DaoFactory.getDao(DaoEnum.ESTUDIANTE);
 }

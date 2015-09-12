@@ -5,6 +5,7 @@
  */
 package com.sge.gui;
 
+import java.awt.Component;
 import javax.swing.Box;
 import javax.swing.JOptionPane;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
@@ -126,6 +127,9 @@ public class MenuEstudiante extends javax.swing.JFrame {
 
     private void jMenuSeccionCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSeccionCloseActionPerformed
        
+         for (Component compo: Pane1Desktop.getComponents())
+            compo.setVisible(false);
+        
         new Login().show();
         this.dispose();
         
