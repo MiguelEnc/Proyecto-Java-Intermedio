@@ -32,7 +32,7 @@ public class EstuCBValue extends AbstractListModel<Object> implements ComboBoxMo
     }
 
     public Object getElementAt(int index) {
-        return list.get(index).getNombre();
+        return list.get(index).getMatricula();
     }
 
     public void setSelectedItem(Object anItem) {

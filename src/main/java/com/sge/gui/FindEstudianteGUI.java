@@ -103,6 +103,11 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
 
         jButtonBuscar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jButtonInscribir.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
         jButtonInscribir.setText("Inscribir");
@@ -170,6 +175,17 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jButtonInscribirActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        // TODO add your handling code here:
+        
+        int id= Integer.parseInt(jTextMatriculaSearch.getText());
+        Estudiante list=EstudianteDao.findEntity(id);
+        System.out.println(list.getNombre());
+        
+        
+        
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -52,4 +52,14 @@ public class EstudianteDaoImpl implements EstudianteDao{
         }
         
     }    
+    
+    public List<Estudiante> getEstu(String id)
+    {
+        try {
+            Query query=em.createNamedQuery("Estudiante.findById");
+               return  query.getResultList();
+        } catch (Exception e) {return null;
+        }
+    }
+    
 }
