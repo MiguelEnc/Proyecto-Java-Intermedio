@@ -54,7 +54,10 @@ public class GrupoUsuarioDaoImpl implements GrupoUsuarioDao{
         Query query = em.createNamedQuery("GrupoUsuario.findByGrupo");
         query.setParameter("grupo", grupoId);
         
-        return (GrupoUsuario) query.getSingleResult();
+        if(query.getSingleResult() != null)
+            return (GrupoUsuario) query.getSingleResult();
+        else
+            return null;
     }
 
     
