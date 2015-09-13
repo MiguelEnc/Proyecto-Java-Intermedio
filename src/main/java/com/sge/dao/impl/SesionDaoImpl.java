@@ -71,6 +71,12 @@ public class SesionDaoImpl implements SesionDao {
         }
     }
     
+    public List<Sesion> getSesionByEstudiante(String matricula) {
+        Query query = em.createNamedQuery("Registro.findSesionbyEstu");
+        query.setParameter("estudiante", matricula);
+        return query.getResultList();
+    }
+    
     
     
 }
