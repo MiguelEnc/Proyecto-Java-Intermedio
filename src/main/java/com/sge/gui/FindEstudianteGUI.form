@@ -86,7 +86,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Sesion&gt; se = sesionDao.getSesionByEstudiante(matricula);&#xa;SesionTableValue tv = new SesionTableValue(se);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Sesion&gt; se = sesionDao.getSesionByEstudiante(matricula);&#xa;&#xa;if(se != null)&#xa;    tv = new SesionTableValue(se);"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -109,7 +109,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxMatriculasActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Estudiante&gt; list=EstudianteDao.getAll();&#xa;EstuCBValue cv=new EstuCBValue(list);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Estudiante&gt; list = EstudianteDao.getAll();&#xa;EstuCBValue cv = new EstuCBValue(list);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
