@@ -7,8 +7,6 @@ package com.sge.gui;
 
 import java.awt.Component;
 import javax.swing.Box;
-import javax.swing.JOptionPane;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 /**
  *
@@ -46,6 +44,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuBuscar = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuSecciones = new javax.swing.JMenu();
         jMenuGestionar = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -73,6 +72,14 @@ public class MenuEstudiante extends javax.swing.JFrame {
             }
         });
         jMenu.add(jMenuBuscar);
+
+        jMenuItem3.setText("Inscribir");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuItem3);
 
         jMenuBar1.add(jMenu);
 
@@ -136,7 +143,6 @@ public class MenuEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuSeccionCloseActionPerformed
  
     private void jMenuBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuBuscarActionPerformed
-        // TODO add your handling code here:
         
        FindEstudianteGUI legui=FindEstudianteGUI.getInstance();
         if(!legui.isVisible())
@@ -153,40 +159,13 @@ public class MenuEstudiante extends javax.swing.JFrame {
         lsgui.setVisible(true);
     }//GEN-LAST:event_jMenuGestionarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MenuEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MenuEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MenuEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MenuEstudiante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new MenuEstudiante().setVisible(true);
-//            }
-//        });
-//    }
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        InscripsionEstudienate inscripcion = new InscripsionEstudienate();
+        Pane1Desktop.add(inscripcion);
+        inscripcion.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JDesktopPane Pane1Desktop;
@@ -200,6 +179,7 @@ public class MenuEstudiante extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuGestionar;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuSeccionClose;
     private javax.swing.JMenu jMenuSecciones;
     private javax.swing.JPopupMenu jPopupMenu1;

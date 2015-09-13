@@ -199,7 +199,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         jMenu6.setText("Usuario");
 
-        jMenuItem11.setText("Gestionar");
+        jMenuItem11.setText("Agregar");
         jMenuItem11.setToolTipText("Gestion de usuarios");
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,7 +298,6 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
     
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
         
         AddGrupo addgrupo = AddGrupo.getInstancia();
         if(!addgrupo.isVisible())
@@ -308,7 +307,6 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
         
         AddUsuario adduser= AddUsuario.getInstancia();
          if(!adduser.isVisible())
@@ -319,7 +317,6 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         
-               
         for (Component compo: jDesktopPane1.getComponents())
             compo.setVisible(false);
         
@@ -329,59 +326,75 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        
         AddMateriaGUI addMatGui =  AddMateriaGUI.getInstancia();
         if(!addMatGui.isVisible())
             jDesktopPane1.add(addMatGui);
         addMatGui.show();
+        
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        
         AddAulaGUI addAulGui =  AddAulaGUI.getInstancia();
         if(!addAulGui.isVisible())
             jDesktopPane1.add(addAulGui);
         addAulGui.show();
+        
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        
         AddSesionGUI addSecGui =  AddSesionGUI.getInstancia();
         if(!addSecGui.isVisible())
             jDesktopPane1.add(addSecGui);
         addSecGui.show();
+        
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        
         ListMateriaGUI lsMatGui =  ListMateriaGUI.getInstancia();
         if(!lsMatGui.isVisible())
             jDesktopPane1.add(lsMatGui);
         lsMatGui.show();
+        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        
         ListAulaGUI lsAulGui =  ListAulaGUI.getInstancia();
         if(!lsAulGui.isVisible())
             jDesktopPane1.add(lsAulGui);
         lsAulGui.show();
+        
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        
         AddHorarioGUI addHorGui =  AddHorarioGUI.getInstancia();
         if(!addHorGui.isVisible())
             jDesktopPane1.add(addHorGui);
         addHorGui.show();
+        
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        
         ListHorarioGUI lsHorGui =  ListHorarioGUI.getInstancia();
         if(!lsHorGui.isVisible())
             jDesktopPane1.add(lsHorGui);
         lsHorGui.show();
+        
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        
         UserToGroup userGrupo =  UserToGroup.getInstancia();
         if(!userGrupo.isVisible())
             jDesktopPane1.add(userGrupo);
         userGrupo.show();
+        
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuSesionGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSesionGestionarActionPerformed
@@ -390,29 +403,9 @@ public class AdminPage extends javax.swing.JFrame {
         if(!lsgui.isVisible())
             jDesktopPane1.add(lsgui);
         lsgui.setVisible(true);
+        
     }//GEN-LAST:event_jMenuSesionGestionarActionPerformed
 
-    /*
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-    }
-    */
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

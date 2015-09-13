@@ -160,7 +160,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestionar"/>
+                <Property name="text" type="java.lang.String" value="Agregar"/>
                 <Property name="toolTipText" type="java.lang.String" value="Gestion de usuarios"/>
               </Properties>
               <Events>

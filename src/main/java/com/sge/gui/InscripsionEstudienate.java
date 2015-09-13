@@ -7,16 +7,23 @@ package com.sge.gui;
 
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
+import com.sge.dao.EstudianteDao;
+import com.sge.dao.HorarioDao;
 import com.sge.dao.HorarioSesionDao;
 import com.sge.dao.MateriaDao;
+import com.sge.dao.RegistroDao;
 import com.sge.dao.SesionDao;
+import com.sge.entity.Estudiante;
+import com.sge.entity.Horario;
 import com.sge.entity.HorarioSesion;
 import com.sge.entity.Materia;
+import com.sge.entity.Registro;
 import com.sge.entity.Sesion;
+import com.sge.templates.comboxes.EstuCBValue;
+import com.sge.templates.comboxes.HorarioCBValue;
 import com.sge.templates.comboxes.MateriaCBValue;
 import com.sge.templates.comboxes.SesionCBValue;
 import java.util.List;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,35 +31,12 @@ import javax.swing.JOptionPane;
  * @author dante
  */
 public class InscripsionEstudienate extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form InscripsionEstudienate
-     */
     
-    private static InscripsionEstudienate instancia = null;
-           
-    private InscripsionEstudienate() {
+    public InscripsionEstudienate() {
         initComponents();
     }
     
     
-
-    public static InscripsionEstudienate getInstance(String matricula) {
-        
-        
-        jLabelMatricula.setText(matricula);
-        try {
-            if(instancia==null) {                
-                instancia=new InscripsionEstudienate();
-            }
-        } catch (Exception e) {
-            System.out.println("Siglenton Error:: "+ e);
-        }
-        return instancia;
-    
-    }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,213 +46,394 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ButtonCancelar = new javax.swing.JButton();
-        LabelProfesorName = new javax.swing.JLabel();
-        LabelAula = new javax.swing.JLabel();
-        LabelHorario = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        LabelCapacidad = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        ComboMaterias = new javax.swing.JComboBox();
+        jPanel1 = new javax.swing.JPanel();
+        lblFechaI = new javax.swing.JLabel();
+        lblCapacidad = new javax.swing.JLabel();
+        lblAula = new javax.swing.JLabel();
+        lblCodigo = new javax.swing.JLabel();
+        lblProfesor = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        ButtonInscribir = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        ComboSecciones = new javax.swing.JComboBox();
-        LabelCodigo = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        cboSesiones = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        cboMaterias = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        btnInscribir = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabelMatricula = new javax.swing.JLabel();
+        lblFechaF = new javax.swing.JLabel();
+        cboHorario = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        txtMatricula = new javax.swing.JTextField();
+        jRadioselect = new javax.swing.JRadioButton();
+        cboMatricula = new javax.swing.JComboBox();
+        btnBuscar = new javax.swing.JButton();
+        jRadiobuscar = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Inscripsion");
 
-        ButtonCancelar.setText("Cancelar");
-        ButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonCancelarActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lblFechaI.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblFechaI.setText("lunes 8pm");
+
+        lblCapacidad.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblCapacidad.setText("cantidad");
+
+        lblAula.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblAula.setText("aula");
+
+        lblCodigo.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblCodigo.setText("codigo");
 
         List<Sesion> listSe=SesionDao.getAll(
-            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
+            //MateriaDao.findName(cboMaterias.getSelectedItem()).getId()
         );
-        LabelProfesorName.setText("nameprofe");
+        lblProfesor.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblProfesor.setText("nameprofe");
 
-        LabelAula.setText("aula");
+        jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel4.setText("Profesor: ");
 
-        LabelHorario.setText("lunes 8pm");
-
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel7.setText("Horario:");
-
-        LabelCapacidad.setText("cantidad");
-
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         jLabel3.setText("Codigo:");
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel1.setText("Materias");
+        jLabel5.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel5.setText("Aula:");
 
-        List<Materia> listMate=MateriaDao.getAll();
-        MateriaCBValue cvMate=new MateriaCBValue(listMate);
-        ComboMaterias.setModel(cvMate);
+        jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel6.setText("Capacidad:");
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel4.setText("Profesor: ");
+        jLabel7.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel7.setText("Fecha Inicio");
+
+        SesionCBValue cvSe = new SesionCBValue(listSe);
+        cboSesiones.setModel(cvSe);
+        cboSesiones.setEnabled(false);
+        cboSesiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSesionesActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Secciones");
 
-        ButtonInscribir.setText("Inscribir");
-        ButtonInscribir.addActionListener(new java.awt.event.ActionListener() {
+        List<Materia> listMate=MateriaDao.getAll();
+        MateriaCBValue cvMate=new MateriaCBValue(listMate);
+        cboMaterias.setModel(cvMate);
+        cboMaterias.setEnabled(false);
+        cboMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonInscribirActionPerformed(evt);
+                cboMateriasActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel6.setText("Capacidad:");
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jLabel1.setText("Materias");
 
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jLabel5.setText("Aula:");
+        btnInscribir.setText("Inscribir");
+        btnInscribir.setEnabled(false);
+        btnInscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInscribirActionPerformed(evt);
+            }
+        });
 
-        /*List<Sesion> listSe=SesionDao.getAll(
-            //MateriaDao.findName(ComboMaterias.getSelectedItem()).getId()
-        );*/
-        SesionCBValue cvSe=new SesionCBValue(listSe);
-        ComboSecciones.setModel(cvSe);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setEnabled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
-        LabelCodigo.setText("codigo");
+        jLabel8.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel8.setText("Fecha Fin");
 
-        jLabel8.setText("Estudiante:");
+        lblFechaF.setText("jLabel9");
 
-        jLabelMatricula.setText("00-0000");
+        List<Horario> listHora = horarioDao.getAll();
+        HorarioCBValue cvHora = new HorarioCBValue(listHora);
+        cboHorario.setModel(cvHora);
+        cboHorario.setEnabled(false);
+        cboHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboHorarioActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        jLabel9.setText("Horario");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCodigo)
+                                    .addComponent(lblProfesor)
+                                    .addComponent(lblAula))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblFechaF)
+                                    .addComponent(lblFechaI)
+                                    .addComponent(lblCapacidad)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(cboSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(cboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboHorario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboSesiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lblProfesor)
+                    .addComponent(jLabel7)
+                    .addComponent(lblFechaI))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblCodigo)
+                    .addComponent(jLabel8)
+                    .addComponent(lblFechaF))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblAula)
+                    .addComponent(jLabel6)
+                    .addComponent(lblCapacidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnInscribir))
+                .addContainerGap())
+        );
+
+        txtMatricula.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        txtMatricula.setEnabled(false);
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatriculaActionPerformed(evt);
+            }
+        });
+
+        jRadioselect.setSelected(true);
+        jRadioselect.setText("Seleccionar");
+        jRadioselect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioselectActionPerformed(evt);
+            }
+        });
+
+        List<Estudiante> list = EstudianteDao.getAll();
+        EstuCBValue cv = new EstuCBValue(list);
+        cboMatricula.setModel(cv);
+        cboMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMatriculaActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.setEnabled(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jRadiobuscar.setText("Buscar");
+        jRadiobuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadiobuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelMatricula)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ComboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(ComboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))))
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelAula)
-                    .addComponent(LabelCapacidad)
-                    .addComponent(LabelCodigo)
-                    .addComponent(LabelProfesorName)
-                    .addComponent(LabelHorario))
-                .addContainerGap(54, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioselect)
+                            .addComponent(jRadiobuscar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboMatricula, 0, 100, Short.MAX_VALUE)
+                            .addComponent(txtMatricula))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBuscar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabelMatricula))
+                    .addComponent(cboMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioselect))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jRadiobuscar))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ComboSecciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(LabelProfesorName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ComboMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(LabelCodigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(LabelAula))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(LabelCapacidad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(LabelHorario))
-                        .addGap(10, 10, 10)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonInscribir)
-                    .addComponent(ButtonCancelar))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         
                
         
         
-        JOptionPane.showMessageDialog(null, ComboSecciones.getSelectedItem().toString());
-    }//GEN-LAST:event_ButtonCancelarActionPerformed
+        JOptionPane.showMessageDialog(null, cboSesiones.getSelectedItem().toString());
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void ButtonInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInscribirActionPerformed
-        // TODO add your handling code here:
+    private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
         
-        SesionDao sdao=(SesionDao) DaoFactory.getDao(DaoEnum.SESION);
-        HorarioSesionDao  hsDao = (HorarioSesionDao) DaoFactory.getDao(DaoEnum.HORARIOSESION);
-        HorarioSesion hs = new HorarioSesion();
-       //hs.setSesion(
+        Horario horario = horarioDao.findEntity(cboHorario.getSelectedIndex() + 1);
+        HorarioSesion horarioSesion = new HorarioSesion();
         
+        horarioSesion.setHorario(horario);
+        horarioSesion.setSesion(this.sesion);
         
-        //hsDao.save(hs);
+        horarioSesionDao.save(horarioSesion);
+        
+        Registro registro = new Registro();
+        registro.setEstudiante(this.estudiante);
+        registro.setHorarioSesion(horarioSesion);
+        registro.setStatus("A");
+        
+        registroDao.save(registro);
         
         JOptionPane.showMessageDialog(null, "La inscripcion ha sido guardada.");
         
+    }//GEN-LAST:event_btnInscribirActionPerformed
+
+    private void cboMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMatriculaActionPerformed
+        cboSesiones.setEnabled(true);
+        estudiante = EstudianteDao.findEntity(cboSesiones.getSelectedIndex() + 1);
+    }//GEN-LAST:event_cboMatriculaActionPerformed
+
+    private void jRadioselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioselectActionPerformed
+        jRadiobuscar.setSelected(false);
+        cboMatricula.setEnabled(true);
+        txtMatricula.setEnabled(false);
+        btnBuscar.setEnabled(false);
+    }//GEN-LAST:event_jRadioselectActionPerformed
+
+    private void jRadiobuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadiobuscarActionPerformed
+        jRadioselect.setSelected(false);
+        cboMatricula.setEnabled(false);
+        txtMatricula.setEnabled(true);
+        btnBuscar.setEnabled(true);
+    }//GEN-LAST:event_jRadiobuscarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+         btnInscribir.setEnabled(true);
+         
+         //si la matricula se encuentra...
+         //estudiante = EstudianteDao.findEntity(cboSesiones.getSelectedIndex() + 1);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
+        cboSesiones.setEnabled(true);
+    }//GEN-LAST:event_txtMatriculaActionPerformed
+
+    private void cboMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMateriasActionPerformed
+        cboHorario.setEnabled(true);
         
-    }//GEN-LAST:event_ButtonInscribirActionPerformed
+        int materiaIndex = cboMaterias.getSelectedIndex() + 1;
+        sesion = SesionDao.findByMateriaId(materiaIndex);
+        
+        lblAula.setText(sesion.getAulaId().getDescripcion());
+        lblCapacidad.setText(String.valueOf(sesion.getCapacidad()));
+        lblCodigo.setText(sesion.getCodigo());
+        lblFechaI.setText(sesion.getFechaInicio().toString());
+        lblFechaF.setText(sesion.getFechaFin().toString());
+        lblProfesor.setText(sesion.getProfesorId().getNombre());
+    }//GEN-LAST:event_cboMateriasActionPerformed
+
+    private void cboSesionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSesionesActionPerformed
+        cboMaterias.setEnabled(true);
+    }//GEN-LAST:event_cboSesionesActionPerformed
+
+    private void cboHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboHorarioActionPerformed
+        btnInscribir.setEnabled(true);
+        btnCancelar.setEnabled(true);
+    }//GEN-LAST:event_cboHorarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonCancelar;
-    private javax.swing.JButton ButtonInscribir;
-    private javax.swing.JComboBox ComboMaterias;
-    private javax.swing.JComboBox ComboSecciones;
-    private javax.swing.JLabel LabelAula;
-    private javax.swing.JLabel LabelCapacidad;
-    private javax.swing.JLabel LabelCodigo;
-    private javax.swing.JLabel LabelHorario;
-    private javax.swing.JLabel LabelProfesorName;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnInscribir;
+    private javax.swing.JComboBox cboHorario;
+    private javax.swing.JComboBox cboMaterias;
+    private javax.swing.JComboBox cboMatricula;
+    private javax.swing.JComboBox cboSesiones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -277,11 +442,25 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private static javax.swing.JLabel jLabelMatricula;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadiobuscar;
+    private javax.swing.JRadioButton jRadioselect;
+    private javax.swing.JLabel lblAula;
+    private javax.swing.JLabel lblCapacidad;
+    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblFechaF;
+    private javax.swing.JLabel lblFechaI;
+    private javax.swing.JLabel lblProfesor;
+    private javax.swing.JTextField txtMatricula;
     // End of variables declaration//GEN-END:variables
     
-    private  MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
-    private  SesionDao SesionDao=(SesionDao) DaoFactory.getDao(DaoEnum.SESION);
-
-
+    private MateriaDao MateriaDao=(MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
+    private SesionDao SesionDao=(SesionDao) DaoFactory.getDao(DaoEnum.SESION);
+    private EstudianteDao EstudianteDao=(EstudianteDao) DaoFactory.getDao(DaoEnum.ESTUDIANTE);
+    private HorarioDao horarioDao = (HorarioDao) DaoFactory.getDao(DaoEnum.HORARIO);
+    private HorarioSesionDao  horarioSesionDao = (HorarioSesionDao) DaoFactory.getDao(DaoEnum.HORARIOSESION);
+    private RegistroDao registroDao = (RegistroDao) DaoFactory.getDao(DaoEnum.REGISTRO);
+    private Sesion sesion;
+    private Estudiante estudiante;
 }

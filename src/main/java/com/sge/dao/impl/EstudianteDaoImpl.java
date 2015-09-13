@@ -45,21 +45,8 @@ public class EstudianteDaoImpl implements EstudianteDao{
     }
 
     public List<Estudiante> getAll() {
-        try {
-            Query query = em.createNamedQuery("Estudiante.findAll");
+        Query query = em.createNamedQuery("Estudiante.findAll");
         return query.getResultList();
-        } catch (Exception e) {return null;
-        }
-        
     }    
-    
-    public List<Estudiante> getEstu(String id)
-    {
-        try {
-            Query query=em.createNamedQuery("Estudiante.findById");
-               return  query.getResultList();
-        } catch (Exception e) {return null;
-        }
-    }
-    
+        
 }

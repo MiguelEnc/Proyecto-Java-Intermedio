@@ -29,6 +29,8 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     }
     private static UserToGroup instancia;
     GrupoUsuarioDao grupoUsuarioDao = (GrupoUsuarioDao) DaoFactory.getDao(DaoEnum.GRUPOUSUARIO);
+    GrupoDao grupoDao = (GrupoDao) DaoFactory.getDao(DaoEnum.GRUPOUSUARIO);
+    UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
     
     int List1SelectedIndex;
     int List2SelectedIndex;
@@ -60,14 +62,13 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     private void fillList1(int index){
         DefaultListModel listModel = new DefaultListModel();
         
-        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
         List<Usuario> items = usuarioDao.getAll();
         
         for(Usuario u : items){
             listModel.addElement(u.getNombreUsuario());
         }
         
-        listModel.addElement(jList1.getSelectedValue().toString());
+        listModel.addElement(jList2.getSelectedValue().toString());
         
         jList1.setModel(listModel);
         
@@ -78,10 +79,8 @@ public class UserToGroup extends javax.swing.JInternalFrame {
     
     private void linkUserToGroup(int userIndex){
         
-        UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
         Usuario usuario = usuarioDao.findEntity(userIndex);
         
-        GrupoDao grupoDao = (GrupoDao) DaoFactory.getDao(DaoEnum.GRUPOUSUARIO);
         Grupo grupo = grupoDao.findEntity(jComboBox1.getSelectedIndex());
         
         GrupoUsuario grupoUsuario = new GrupoUsuario();
@@ -92,7 +91,7 @@ public class UserToGroup extends javax.swing.JInternalFrame {
         grupoUsuarioDao.save(grupoUsuario);
     }
     
-    private void fillList2(){
+    private void fillList2(int index){
         DefaultListModel listModel = new DefaultListModel();
         
         int grupoId = jComboBox1.getSelectedIndex();
@@ -100,10 +99,21 @@ public class UserToGroup extends javax.swing.JInternalFrame {
         GrupoUsuario grupoUsuario = grupoUsuarioDao.getGrupoUsuarioByGrupoId(grupoId);
         
         listModel.addElement(grupoUsuario.getUsuario().getNombreUsuario());
-        
+        listModel.addElement(jList1.getSelectedValue().toString());
         jList2.setModel(listModel);
     }
     
+    private void unlinkUserToGroup(int userIndex){
+                
+        Grupo grupo = grupoDao.findEntity(jComboBox1.getSelectedIndex());
+        
+        GrupoUsuario grupoUsuario = grupoUsuarioDao.getGrupoUsuarioByGrupoId(jComboBox1.getSelectedIndex());
+        
+        grupoUsuario.setUsuario(null);
+        grupoUsuario.setGrupo(grupo);
+        
+        grupoUsuarioDao.update(grupoUsuario);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -272,7 +282,7 @@ public class UserToGroup extends javax.swing.JInternalFrame {
 
     private void btnPassToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassToActionPerformed
         jList1.remove(jList1.getSelectedIndex());
-        fillList2();
+        fillList2(List1SelectedIndex);
     }//GEN-LAST:event_btnPassToActionPerformed
 
     private void btnPassBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPassBackActionPerformed

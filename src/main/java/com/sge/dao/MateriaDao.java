@@ -8,7 +8,5 @@ import java.util.List;
  * @author miguel
  */
 public interface MateriaDao extends GenericDao<Materia,Integer>, ServiceDao{
-    
-    public Materia findName(Integer materiaId);
-    
+        
 }

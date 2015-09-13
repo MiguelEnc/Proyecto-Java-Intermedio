@@ -19,15 +19,10 @@ public class SesionCBValue extends AbstractListModel<Object> implements ComboBox
      private List<Sesion> list;
 
     public SesionCBValue(List<Sesion> listSe) {
-     this.list =list;
+        this.list =listSe;
     }
      
-     
-     private  String selected;
-
-  
-
-
+    private  String selected;
      
     public int getSize() {
         return  list. size();
