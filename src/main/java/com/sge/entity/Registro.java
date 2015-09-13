@@ -31,9 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     
     @NamedQuery(name = "Registro.findSesionbyEstu",query = 
             "SELECT s.a FROM"
-            + "(SELECT e FROM Estudiante e WHERE e.matricula = :matricula) e"
-            + "join (SELECT h FROM HorarioSesion h WHERE h.id = :id) hs on(e.horario.sesion.id=hs.horario.sesion.id) "
-            + "join (SELECT s FROM Sesion s WHERE s.id = :id) s on(hs.sesion.id=s.sesion.id)"
+            + "(SELECT e FROM Estudiante e) e"
+            + "join (SELECT h FROM HorarioSesion h) hs on(e.horario.sesion.id=hs.horario.sesion.id) "
+            + "join (SELECT s FROM Sesion s) s on(hs.sesion.id=s.sesion.id)"
             + "where e.esdiante.id= :matricula")
 
 })
