@@ -70,6 +70,20 @@ public class SesionDaoImpl implements SesionDao {
         } catch (Exception e) {return null;
         }
     }
+
+    public List<Sesion> getSesionByEstudiante(String matricula) {
+        Query query = em.createNativeQuery("SELECT s.* FROM " 
+                +"(select r.* from registro r join estudiante e on (r.estudiante_id=e.id) where e.matricula = '" + matricula + "') re " 
+                +"join (SELECT * FROM horario_sesion) hs on(re.horario_sesion_id=hs.id) " 
+                +"join (SELECT * FROM sesion) s on(hs.sesion_id=s.id)");
+        //query.setParameter("matricula", matricula);
+       
+        if(query.getResultList() != null)
+            return query.getResultList();
+        else
+            return null;
+    }
+    
     
     
     

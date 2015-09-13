@@ -79,8 +79,12 @@ public class UserToGroup extends javax.swing.JInternalFrame {
         
         Grupo grupo = grupoDao.findEntity(jComboBox1.getSelectedIndex() + 1);
         
+        List<GrupoUsuario> gU = grupoUsuarioDao.getAll();
+        int rows = gU.size();
+        
         GrupoUsuario grupoUsuario = new GrupoUsuario();
         
+        grupoUsuario.setId(rows + 1);
         grupoUsuario.setGrupo(grupo);
         grupoUsuario.setUsuario(usuario);
         

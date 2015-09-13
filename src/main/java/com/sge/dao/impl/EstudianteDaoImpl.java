@@ -48,5 +48,12 @@ public class EstudianteDaoImpl implements EstudianteDao{
         Query query = em.createNamedQuery("Estudiante.findAll");
         return query.getResultList();
     }    
+
+    public Estudiante findEstudianteByMateria(String matricula) {
+        Query query = em.createNamedQuery("Estudiante.findByMatricula");
+        query.setParameter("matricula", matricula);
+        
+        return (Estudiante) query.getSingleResult();
+    }
         
 }

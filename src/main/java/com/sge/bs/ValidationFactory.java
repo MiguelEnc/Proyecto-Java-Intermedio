@@ -14,7 +14,7 @@ public class ValidationFactory {
         Validation validation=null;
         
         switch(ve) {
-            case SESION:
+            case REGISTRO:
                 validation=new RegistroValidation();
                 break;
         }

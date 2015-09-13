@@ -59,15 +59,14 @@ public class TEST {
 //        System.out.println("Descripcion de la sesion: "+ sesion.getCodigo());
         
         
-        ValidationContext<Registro> context=new ValidationContext<Registro>(ValidationEnum.SESION);
         
-        context.execute(reg);
+        
+        
 //        sesionDao.save(s);
         
         System.out.println("Done!!");
         
         */
-        
         
         EntityManagerFactory factory = ConnectionDB.getInstance();
         System.out.println("Connection open: " + factory.isOpen());

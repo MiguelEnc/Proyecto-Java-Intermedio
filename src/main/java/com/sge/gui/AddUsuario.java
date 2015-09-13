@@ -9,6 +9,7 @@ import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.UsuarioDao;
 import com.sge.entity.Usuario;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -161,7 +162,12 @@ public class AddUsuario extends javax.swing.JInternalFrame {
         
         UsuarioDao usuarioDao = (UsuarioDao) DaoFactory.getDao(DaoEnum.USUARIO);
         
+        //usado para saber cuantos registros hay
+        List<Usuario> user = usuarioDao.getAll();
+        int cantidad = user.size();
+        
         Usuario usuario = new Usuario();
+        usuario.setId(cantidad + 1);
         usuario.setClave(txtClave.getText());
         usuario.setNombreUsuario(txtNombre.getText());
         usuario.setStatus("A");

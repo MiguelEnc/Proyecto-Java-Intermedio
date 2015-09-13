@@ -7,6 +7,8 @@ package com.sge.gui;
 
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
+import com.sge.bs.ValidationEnum;
+import com.sge.bs.validation.ValidationContext;
 import com.sge.dao.EstudianteDao;
 import com.sge.dao.HorarioDao;
 import com.sge.dao.HorarioSesionDao;
@@ -366,15 +368,14 @@ public class InscripsionEstudienate extends javax.swing.JInternalFrame {
         registro.setHorarioSesion(horarioSesion);
         registro.setStatus("A");
         
-        registroDao.save(registro);
-        
-        JOptionPane.showMessageDialog(null, "La inscripcion ha sido guardada.");
+        ValidationContext<Registro> context=new ValidationContext<Registro>(ValidationEnum.REGISTRO);
+        context.execute(registro);
         
     }//GEN-LAST:event_btnInscribirActionPerformed
 
     private void cboMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMatriculaActionPerformed
         cboSesiones.setEnabled(true);
-        estudiante = EstudianteDao.findEntity(cboSesiones.getSelectedIndex() + 1);
+        estudiante = EstudianteDao.findEntity(cboMatricula.getSelectedIndex() + 1);
     }//GEN-LAST:event_cboMatriculaActionPerformed
 
     private void jRadioselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioselectActionPerformed

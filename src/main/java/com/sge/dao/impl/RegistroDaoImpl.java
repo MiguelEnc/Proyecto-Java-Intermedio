@@ -48,9 +48,9 @@ public class RegistroDaoImpl implements RegistroDao{
         return query.getResultList();
     }
 
-    public List<Registro> getRegistrosBySesion(int sesion) {
-        Query query = em.createNamedQuery("Registro.findByHorarioSesionId");
-        query.setParameter("horarioSesionId", sesion);
-        return query.getResultList();
+    public Registro getRegistrosByEstudianteId(int id ) {
+        Query query = em.createNamedQuery("Registro.findByEstudiante");
+        query.setParameter("estudiante", id);
+        return (Registro) query.getSingleResult();
     }
 }

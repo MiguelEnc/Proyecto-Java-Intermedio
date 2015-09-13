@@ -22,8 +22,7 @@ public class ListAulaGUI extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    public static ListAulaGUI getInstancia()
-    {
+    public static ListAulaGUI getInstancia(){
         if(instancia==null)
             instancia=new ListAulaGUI();
         return instancia;

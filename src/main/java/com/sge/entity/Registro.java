@@ -27,7 +27,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Registro.findById", query = "SELECT r FROM Registro r WHERE r.id = :id"),
     @NamedQuery(name = "Registro.findByEstudiante", query = "SELECT r FROM Registro r WHERE r.estudiante.id = :estudiante"),
     @NamedQuery(name = "Registro.findByHorarioSesion", query = "SELECT r FROM Registro r WHERE r.horarioSesion.id = :horarioSesion"),
-    @NamedQuery(name = "Registro.findByStatus", query = "SELECT r FROM Registro r WHERE r.status = :status")})
+    @NamedQuery(name = "Registro.findByStatus", query = "SELECT r FROM Registro r WHERE r.status = :status"),
+    
+//    @NamedQuery(name = "Registro.findSesionbyEstu", query =  "SELECT s.* FROM"
+//            + " (select r.* from registro r join estudiante e on (r.estudiante.id=e.id) where e.matricula= :matriculaId) re"
+//            +" join (SELECT * FROM horarioSesion) hs "
+//            +" on(re.horariSesion.id=hs.id)" 
+//            +" join (SELECT * FROM sesion) s on(hs.sesion.id=s.id)")
+})
+
 public class Registro implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -263,13 +263,13 @@ public class AddSesionGUI extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
         MateriaDao materiaDao= (MateriaDao) DaoFactory.getDao(DaoEnum.MATERIA);
-        Materia materia = materiaDao.findEntity(cboMateria.getSelectedIndex());
+        Materia materia = materiaDao.findEntity(cboMateria.getSelectedIndex()+1);
         
         AulaDao aulaDao = (AulaDao) DaoFactory.getDao(DaoEnum.AULA);
-        Aula aula = aulaDao.findEntity(cboAula.getSelectedIndex());
+        Aula aula = aulaDao.findEntity(cboAula.getSelectedIndex()+1);
         
         ProfesorDao profesorDao = (ProfesorDao) DaoFactory.getDao(DaoEnum.PROFESOR);
-        Profesor profesor = profesorDao.findEntity(cboProfesor.getSelectedIndex());
+        Profesor profesor = profesorDao.findEntity(cboProfesor.getSelectedIndex()+1);
         
         Date fechaInicio = ManageUtil.strToDate(txtFechaInicio.getText());
         Date fechaFinal = ManageUtil.strToDate(txtFechaFin.getText());

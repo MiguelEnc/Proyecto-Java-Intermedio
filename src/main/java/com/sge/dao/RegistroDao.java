@@ -8,4 +8,5 @@ import com.sge.entity.Registro;
  */
 public interface RegistroDao extends GenericDao<Registro,Integer>,ServiceDao{
     
+    public Registro getRegistrosByEstudianteId(int id );
 }

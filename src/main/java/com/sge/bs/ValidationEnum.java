@@ -6,5 +6,5 @@ package com.sge.bs;
  */
 public enum ValidationEnum {
     
-    SESION
+    REGISTRO
 }

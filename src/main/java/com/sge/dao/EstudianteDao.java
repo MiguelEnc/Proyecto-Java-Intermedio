@@ -8,4 +8,5 @@ import com.sge.entity.Estudiante;
  */
 public interface EstudianteDao extends GenericDao<Estudiante,Integer>, ServiceDao{
     
+    public Estudiante findEstudianteByMateria(String materia);
 }
