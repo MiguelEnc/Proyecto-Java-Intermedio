@@ -8,7 +8,10 @@ package com.sge.gui;
 import com.sge.bs.DaoEnum;
 import com.sge.bs.DaoFactory;
 import com.sge.dao.EstudianteDao;
+import com.sge.dao.SesionDao;
 import com.sge.entity.Estudiante;
+import com.sge.entity.Sesion;
+import com.sge.template.tables.SesionTableValue;
 import com.sge.templates.comboxes.EstuCBValue;
 import java.util.List;
 
@@ -64,25 +67,9 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Detalle Estudiante");
 
-        jTableMateriasSelect.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Materia", "Profesor", "Aula", "Codigo", "Capacidad", "Fecha Inicio", "Fecha Fin", "Horario"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        List<Sesion> se = sesionDao.getSesionByEstudiante(matricula);
+        SesionTableValue tv = new SesionTableValue(se);
+        jTableMateriasSelect.setModel(tv);
         jScrollPane1.setViewportView(jTableMateriasSelect);
 
         jTextMatriculaSearch.setFont(new java.awt.Font("Ubuntu", 0, 11)); // NOI18N
@@ -198,4 +185,5 @@ public class FindEstudianteGUI extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextMatriculaSearch;
     // End of variables declaration//GEN-END:variables
     private  EstudianteDao EstudianteDao=(EstudianteDao) DaoFactory.getDao(DaoEnum.ESTUDIANTE);
+    private  SesionDao sesionDao = (SesionDao) DaoFactory.getDao(DaoEnum.SESION);
 }

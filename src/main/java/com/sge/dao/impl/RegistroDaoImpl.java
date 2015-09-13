@@ -49,8 +49,16 @@ public class RegistroDaoImpl implements RegistroDao{
     }
 
     public List<Registro> getRegistrosBySesion(int sesion) {
-        Query query = em.createNamedQuery("Registro.findByHorarioSesionId");
+        Query query = em.createNamedQuery("Registro.findByHorarioSesion");
         query.setParameter("horarioSesionId", sesion);
         return query.getResultList();
     }
+    
+    
+    
+    
+    
+    
+    //Registro.findSesionbyEstu
+    
 }
